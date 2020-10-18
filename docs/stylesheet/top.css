@@ -1,0 +1,16 @@
+﻿
+.canvas-image {
+    position: absolute;
+    left: -9999px;
+}
+
+.ikusei-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    background-color: #ff0000;
+    width: 256px;
+    height: 64px;
+    font-size: 48px;
+}

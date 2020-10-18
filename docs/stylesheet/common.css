@@ -1,0 +1,32 @@
+﻿
+header {
+    color: #ffffff;
+    background-color: #00008b; /* #3f48cc */
+    height: 64px;
+}
+
+.header-icon {
+    float: left;
+    margin: 8px;
+}
+
+.header-icon img {
+    width: 48px;
+    height: 48px;
+}
+
+.header-logo {
+    font-size: 24px;
+    float: left;
+    margin: 16px;
+}
+
+.header-logo .ikusei {
+    color: #ff0000;
+}
+
+main {
+    background-color: #f0f8ff;
+    height: 512px;
+    display: block;
+}
