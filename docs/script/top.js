@@ -19,7 +19,7 @@ function Draw() {
     ctx.strokeStyle = "#333399";
     ctx.lineWidth = 5;
     ctx.strokeRect(30, 70, 200, 20);
-    ctx.drawImage(avatar, 0, 0, avatar.clientWidth, avatar.clientHeight, (canvas.width - 256) / 2, 100, 256, 256);
+    ctx.drawImage(avatar, 0, 0, 512, 512, (canvas.width - 256) / 2, 100, 256, 256);
 }
 
 window.onload = function () {
