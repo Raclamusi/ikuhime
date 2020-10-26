@@ -1,7 +1,12 @@
 ﻿
-header {
+body {
+    margin: 0;
+}
+
+#header {
+    position: relative;
     color: #ffffff;
-    background-color: #00008b; /* #3f48cc */
+    background-color: #00008b;
     height: 64px;
 }
 
@@ -16,17 +21,21 @@ header {
 }
 
 .header-logo {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 24px;
     float: left;
-    margin: 16px;
+    margin-left: 16px;
+
 }
 
 .header-logo .ikusei {
     color: #ff0000;
 }
 
-main {
+#main {
     background-color: #f0f8ff;
-    height: 512px;
+    position: relative;
     display: block;
 }

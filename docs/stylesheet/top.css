@@ -1,7 +1,29 @@
 ﻿
-.canvas-image {
+.status {
     position: absolute;
-    left: -9999px;
+    left: 40px;
+    top: 20px;
+    font-size: 30px;
+}
+
+#exp-bar {
+    position: absolute;
+    left: 30px;
+    top: 60px;
+}
+
+#avatar {
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+    width: 256px;
+    height: 256px;
+}
+
+.buttons {
+    position: relative;
+    top: 80%;
 }
 
 .ikusei-button {
