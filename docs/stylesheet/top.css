@@ -12,13 +12,25 @@
     top: 60px;
 }
 
-#avatar {
+.avater-images img {
     position: absolute;
     left: 50%;
     top: 100px;
     transform: translateX(-50%);
-    width: 256px;
-    height: 256px;
+    width: 384px;
+    height: 384px;
+    display: block;
+}
+
+#aura {
+    display: none;
+}
+
+@media screen and (max-width:480px) {
+    .avater-images img {
+        width: 256px;
+        height: 256px;
+    }
 }
 
 .buttons {
