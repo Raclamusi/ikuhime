@@ -2,20 +2,20 @@
 .status {
     position: absolute;
     left: 40px;
-    top: 20px;
+    top: 100px;
     font-size: 30px;
 }
 
 #exp-bar {
     position: absolute;
     left: 30px;
-    top: 60px;
+    top: 140px;
 }
 
 .avater-images img {
     position: absolute;
     left: 50%;
-    top: 100px;
+    top: 160px;
     transform: translateX(-50%);
     width: 384px;
     height: 384px;
@@ -47,4 +47,16 @@
     width: 256px;
     height: 64px;
     font-size: 48px;
+}
+
+
+
+@media screen and (max-width: 760px) {
+    .status {
+        top: 70px;
+    }
+
+    #exp-bar {
+        top: 110px;
+    }
 }

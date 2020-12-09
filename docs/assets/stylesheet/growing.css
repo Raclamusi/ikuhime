@@ -1,14 +1,7 @@
 ﻿
-.registration {
-    position: relative;
-    top: 40%;
-    transform: translateY(-50%);
-    height: 320px;
-}
-
 #I-did-my-best {
     position: absolute;
-    top: 50%;
+    top: 200px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #ffffff;
@@ -20,7 +13,7 @@
 
 .links {
     position: absolute;
-    top: 80%;
+    top: 400px;
     width: 100%;
     text-align: center;
     font-size: 32px;

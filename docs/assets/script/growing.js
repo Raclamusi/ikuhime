@@ -10,5 +10,5 @@ document.getElementById("I-did-my-best").onclick = function () {
     }
     localStorage.setItem("level", String(level));
     localStorage.setItem("experience", String(experience));
-    location.href = "index.html";
+    location.href = "/ikuhime/home";
 };

@@ -19,5 +19,5 @@ function Update() {
     }
 }
 
-window.addEventListener("load", Update);
-window.addEventListener("resize", Update);
+window.onload = Update;
+window.onresize = Update;

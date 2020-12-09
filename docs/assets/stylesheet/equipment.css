@@ -1,0 +1,38 @@
+﻿
+#equip {
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    border: solid 2px #888888;
+    overflow: auto;
+}
+
+#equip .equip-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#equip .equip-item {
+    height: 50px;
+    border: solid 2px #aaaaaa;
+    background-color: #eeffdd;
+    cursor: default;
+}
+
+#equip .equip-item:hover {
+    background-color: #bbcc99;
+}
+
+
+
+@media screen and (max-width: 760px) {
+    #equip {
+        top: 100px;
+        width: 280px;
+        height: 300px;
+    }
+}
