@@ -1,0 +1,88 @@
+﻿
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #f0f8ff;
+}
+
+#header {
+    color: #ffffff;
+    background-color: #00008b;
+    height: 80px;
+}
+
+#header .header-icon {
+    display: inline-block;
+    margin: 15px;
+}
+
+#header .header-icon img {
+    width: 50px;
+    height: 50px;
+}
+
+#tab {
+    position: absolute;
+    top: 100%;
+    transform: translateY(-100%);
+    width: 100%;
+    height: 50px;
+    padding: 0 5%;
+}
+
+#tab .tab-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#tab .tab-button {
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+    padding: 10px 0;
+    float: left;
+    color: #ff0000;
+    background-color: #ffff00;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: solid 2px #00008b;
+    border-radius: 10px 10px 0 0;
+}
+
+#tab .tab-selected , #tab .tab-button:active {
+    color: #ffff00;
+    background-color: #ff0000;
+}
+
+
+
+@media screen and (max-width: 760px) {
+    #header {
+        height: 50px;
+    }
+
+    #header .header-icon {
+        margin: 10px;
+    }
+
+    #header .header-icon img {
+        width: 30px;
+        height: 30px;
+    }
+
+    #tab .tab-button {
+        padding: 15px 0;
+        font-size: 15px;
+    }
+}
