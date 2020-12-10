@@ -6,7 +6,7 @@
     transform: translateX(-50%);
     width: 600px;
     height: 300px;
-    border: solid 2px #888888;
+    border: 2px solid #888888;
     overflow: auto;
 }
 
@@ -18,7 +18,7 @@
 
 #equip .equip-item {
     height: 50px;
-    border: solid 2px #aaaaaa;
+    border: 2px solid #aaaaaa;
     background-color: #eeffdd;
     cursor: default;
 }

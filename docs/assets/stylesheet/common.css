@@ -3,10 +3,6 @@
     box-sizing: border-box;
 }
 
-html {
-    height: 100%;
-}
-
 body {
     margin: 0;
     background-color: #f0f8ff;
@@ -56,7 +52,7 @@ body {
     text-align: center;
     text-decoration: none;
     letter-spacing: 1px;
-    border: solid 2px #00008b;
+    border: 2px solid #00008b;
     border-radius: 10px 10px 0 0;
 }
 
