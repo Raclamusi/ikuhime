@@ -18,40 +18,52 @@
     <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/top.css">
 </head>
 <body>
-    <header id="header">
+    <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
+        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <nav id="menu" class="header-menu">
+            <ul class="header-menulist">
+                <li><a href="/ikuhime/home">ホーム</a></li>
+                <li><a href="/ikuhime/growing">育成</a></li>
+                <li><a href="/ikuhime/equipment">装備</a></li>
+                <li><a href="/ikuhime/result">成果</a></li>
+                <li><a href="/ikuhime/setting">設定</a></li>
+            </ul>
+        </nav>
     </header>
-    <div id="keyvisual">
-        <h1 class="keyvisual-copy">
-            自分と一緒に育つ、<br>
-            自分だけのアバター。
-        </h1>
-        <p class="keyvisual-text">
-            「育成！姫工生アバター」は、姫工生の努力を可視化するサイトです。<br>
-            ユニークなアバターを作ったり、アバターを育成していくなかで、<br>
-            自分自身の能力を磨き、成長させることができます。
-        </p>
-        <a href="/ikuhime/home" class="keyvisual-startbutton">スタート！</a>
-        <div class="keyvisual-image">
-            <img class="keyvisual-icon" src="/ikuhime/assets/image/icon.png">
+    <main class="main">
+        <div class="keyvisual">
+            <h1 class="keyvisual-copy">
+                自分と一緒に育つ、<br>
+                自分だけのアバター。
+            </h1>
+            <p class="keyvisual-text">
+                「育成！姫工生アバター」は、姫工生の努力を可視化するサイトです。<br>
+                ユニークなアバターを作ったり、アバターを育成していくなかで、<br>
+                自分自身の能力を磨き、成長させることができます。
+            </p>
+            <a href="/ikuhime/home" class="keyvisual-startbutton">スタート！</a>
+            <div class="keyvisual-image">
+                <img class="keyvisual-icon" src="/ikuhime/assets/image/icon.png">
+            </div>
         </div>
-    </div>
-    <section class="features">
-        <h2>成長するアバター</h2>
-        <p>
-            資格･検定を取ったり、試験の記録を残したりすると、アバターがレベルアップします！<br>
-            また、条件を満たすと装備を獲得でき、アバターを自分好みにカスタマイズできます！<br>
-            努力するごとに装備が増えていき、アバターの成長を見れば、自分の成長がまるわかりです！
-        </p>
-    </section>
-    <section class="features">
-        <h2>取得した資格･検定を記録</h2>
-        <p>
-            資格試験や検定に合格した時に、簡単に記録しておけます！<br>
-            ジュニアマイスターや工業技術顕彰のポイントを計算することもできます！<br>
-            取得日も一緒に入力しておけば、履歴書を作るときに楽です！
-        </p>
-    </section>
+        <section class="features">
+            <h2>成長するアバター</h2>
+            <p>
+                資格･検定を取ったり、試験の記録を残したりすると、アバターがレベルアップします！<br>
+                また、条件を満たすと装備を獲得でき、アバターを自分好みにカスタマイズできます！<br>
+                努力するごとに装備が増えていき、アバターの成長を見れば、自分の成長がまるわかりです！
+            </p>
+        </section>
+        <section class="features">
+            <h2>取得した資格･検定を記録</h2>
+            <p>
+                資格試験や検定に合格した時に、簡単に記録しておけます！<br>
+                ジュニアマイスターや工業技術顕彰のポイントを計算することもできます！<br>
+                取得日も一緒に入力しておけば、履歴書を作るときに楽です！
+            </p>
+        </section>
+    </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
 </body>
 </html>

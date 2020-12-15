@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:site_name" content="育成！姫工生アバター">
-    <meta property="og:title" content="育成！姫工生アバター">
+    <meta property="og:title" content=" - 育成！姫工生アバター">
     <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raclamusi.github.io/ikuhime/growing">
@@ -18,20 +18,28 @@
     <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/growing.css">
 </head>
 <body>
-    <header id="header">
+    <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
+        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <nav id="menu" class="header-menu">
+            <ul class="header-menulist">
+                <li><a href="/ikuhime/home">ホーム</a></li>
+                <li><a href="/ikuhime/growing">育成</a></li>
+                <li><a href="/ikuhime/equipment">装備</a></li>
+                <li><a href="/ikuhime/result">成果</a></li>
+                <li><a href="/ikuhime/setting">設定</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="registration"><input id="I-did-my-best" type="button" value="頑張ったよ！"></div>
-    <div class="links"><a href="/ikuhime/home">戻る</a></div>
-    <div id="tab">
-        <ul class="tab-list">
-            <li><a href="/ikuhime/home" class="tab-button">ホーム</a></li>
-            <li><a href="/ikuhime/growing" class="tab-button tab-selected">育成</a></li>
-            <li><a href="/ikuhime/equipment" class="tab-button">装備</a></li>
-            <li><a href="/ikuhime/qualification" class="tab-button">資格･検定</a></li>
-        </ul>
-    </div>
+    <main class="main">
+        <a href="/ikuhime/home" class="back">←戻る</a>
+        <div class="buttons">
+            <ul class="buttons-list">
+                <li><a href="/ikuhime/growing/todays-event" class="buttons-item buttons-event">今日の出来事</a></li>
+                <li><a href="/ikuhime/growing/new-qualification" class="buttons-item buttons-qualification">新たな資格･検定</a></li>
+            </ul>
+        </div>
+    </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
-    <script type="text/javascript" src="/ikuhime/assets/script/growing.js"></script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+
+.registration {
+    margin: 0 50px;
+    letter-spacing: 0.05em;
+}
+
+.registration p {
+    font-size: 18px;
+    letter-spacing: 0.02em;
+}
+
+.registration textarea {
+    width: 100%;
+    height: 150px;
+    font-size: 20px;
+}
+
+.registration-link {
+    display: block;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    margin: 10px;
+    border: 3px solid #558800;
+    border-radius: 3px;
+    font-size: 18px;
+    text-align: center;
+    color: #558800;
+    background-color: #ccffcc
+}
+
+.registration-button {
+    display: block;
+    width: 300px;
+    max-width: 90%;
+    height: 50px;
+    line-height: 50px;
+    margin: 15px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #ff8800;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}

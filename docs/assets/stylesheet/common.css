@@ -8,76 +8,122 @@ body {
     background-color: #f0f8ff;
 }
 
-#header {
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    height: 80px;
     color: #ffffff;
     background-color: #00008b;
-    height: 80px;
+    align-items: center;
+    z-index: 1;
 }
 
-#header .header-icon {
+.header-icon {
     display: inline-block;
-    margin: 15px;
+    margin: 0 15px;
 }
 
-#header .header-icon img {
+.header-icon img {
     width: 50px;
-    height: 50px;
 }
 
-#tab {
-    position: absolute;
-    top: 100%;
-    transform: translateY(-100%);
-    width: 100%;
-    height: 50px;
-    padding: 0 5%;
+.header-menuicon {
+    display: none;
 }
 
-#tab .tab-list {
+.header-menu {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.header-menulist {
+    display: inline-block;
     margin: 0;
     padding: 0;
-    list-style-type: none;
+    list-style: none;
+    font-size: 22px;
 }
 
-#tab .tab-button {
-    display: inline-block;
-    width: 25%;
-    height: 100%;
-    padding: 10px 0;
+.header-menulist li {
     float: left;
-    color: #ff0000;
-    background-color: #ffff00;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    letter-spacing: 1px;
-    border: 2px solid #00008b;
-    border-radius: 10px 10px 0 0;
+    margin: 0 30px;
 }
 
-#tab .tab-selected , #tab .tab-button:active {
-    color: #ffff00;
-    background-color: #ff0000;
+.header-menulist a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.main {
+    display: block;
+    position: relative;
+    padding-top: 80px;
+}
+
+.back {
+    display: inline-block;
+    margin: 20px;
+    padding: 5px 10px;
+    border: 5px solid #0033ff;
+    border-radius: 10px;
+    color: #0033ff;
+    background-color: #88ccff;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 
 
 @media screen and (max-width: 760px) {
-    #header {
+    .header {
         height: 50px;
     }
 
-    #header .header-icon {
-        margin: 10px;
+    .header-icon {
+        margin: 0 15px;
     }
 
-    #header .header-icon img {
+    .header-icon img {
         width: 30px;
-        height: 30px;
     }
 
-    #tab .tab-button {
+    .header-menuicon {
+        display: inline-block;
+        margin: 0 20px;
+        font-size: 15px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .header-menu {
+        display: none;
+        margin: 0;
+        padding: 30px 50px;
+        width: 100%;
+        min-height: calc(100vh - 50px);
+        position: absolute;
+        left: 0;
+        top: 50px;
+        background-color: #000000cc;
+        z-index: -1;
+    }
+
+    .header-menuopen {
+        display: block;
+    }
+
+    .header-menulist li {
+        float: none;
+        margin: 20px 0;
+    }
+
+    .main {
+        padding-top: 50px;
+    }
+
+    .tab-button {
         padding: 15px 0;
         font-size: 15px;
     }

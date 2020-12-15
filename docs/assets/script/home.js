@@ -1,23 +1,17 @@
 
-var levelSpan = document.getElementById("status-level");
-var expBarCanvas = document.getElementById("exp-bar");
-var expBarContext = expBarCanvas.getContext("2d");
-var aura = document.getElementById("aura");
+var nameSpan = document.getElementById("avatar-name");
+var levelSpan = document.getElementById("avatar-level");
+var expSpan = document.getElementById("avatar-exp")
+var expBar = document.getElementById("avatar-expbar");
 
-var level = parseInt(localStorage.getItem("level")) || 1;
-var experience = parseInt(localStorage.getItem("experience")) || 0;
+window.addEventListener("load", function () {
+    while (savedata.exp >= savedata.level * 100) {
+        savedata.exp -= savedata.level * 100;
+        savedata.level++;
+	}
 
-function Update() {
-    levelSpan.textContent = String(level);
-    expBarContext.fillStyle = "#33ff66";
-    expBarContext.fillRect(5, 5, 20 * experience, 20);
-    expBarContext.strokeStyle = "#333399";
-    expBarContext.lineWidth = 5;
-    expBarContext.strokeRect(5, 5, 200, 20);
-    if (level >= 100) {
-        aura.style.display = "block";
-    }
-}
-
-window.onload = Update;
-window.onresize = Update;
+    nameSpan.textContent = savedata.name;
+    levelSpan.textContent = "" + savedata.level;
+    expSpan.textContent = "" + savedata.level * 100 - savedata.exp;
+    expBar.style.width = savedata.exp / savedata.level + "%";
+});

@@ -1,5 +1,5 @@
 ﻿
-#equip {
+.equip {
     position: absolute;
     left: 50%;
     top: 150px;
@@ -10,27 +10,27 @@
     overflow: auto;
 }
 
-#equip .equip-list {
+.equip-list {
     padding: 0;
     margin: 0;
     list-style-type: none;
 }
 
-#equip .equip-item {
+.equip-item {
     height: 50px;
     border: 2px solid #aaaaaa;
     background-color: #eeffdd;
     cursor: default;
 }
 
-#equip .equip-item:hover {
+.equip-item:hover {
     background-color: #bbcc99;
 }
 
 
 
 @media screen and (max-width: 760px) {
-    #equip {
+    .equip {
         top: 100px;
         width: 280px;
         height: 300px;

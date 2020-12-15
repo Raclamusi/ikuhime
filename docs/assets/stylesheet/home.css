@@ -1,62 +1,87 @@
 ﻿
-.status {
-    position: absolute;
-    left: 40px;
-    top: 100px;
+.profile {
+
+}
+
+.profile-name {
+    margin: 30px 30px 0;
     font-size: 30px;
 }
 
-#exp-bar {
-    position: absolute;
-    left: 30px;
-    top: 140px;
+.profile-expbar {
+    margin: 0 30px;
+    width: 210px;
+    height: 30px;
+    border: 5px solid #333399;
+    background-color: #ffffff;
 }
 
-.avater-images img {
+.profile-expbar-inner {
+    width: 0;
+    height: 100%;
+    background-color: #33ff66;
+}
+
+.profile-exp {
+    font-size: 20px;
+}
+
+.profile-title {
+    display: block;
+    margin: 10px 30px;
+    width: 150px;
+    border: 4px ridge #ff3300;
+    color: #000000;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ff8800;
+}
+
+.avatar-images {
     position: absolute;
     left: 50%;
-    top: 30%;
+    top: 30vh;
     transform: translateX(-50%);
-    width: 384px;
-    height: 384px;
     display: block;
 }
 
-#aura {
-    display: none;
+.avatar-images img {
+    width: 384px;
 }
 
 @media screen and (max-width:480px) {
-    .avater-images img {
+    .avatar-images img {
         width: 256px;
-        height: 256px;
     }
 }
 
 .buttons {
-    position: relative;
-    top: 80%;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    margin: 100px 50px 0;
 }
 
-.ikusei-button {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.buttons a {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 100px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 35px;
     color: #ffffff;
-    background-color: #ff0000;
-    width: 256px;
-    height: 64px;
-    font-size: 48px;
+    background-color: #ff5500;
+    box-shadow: #00000044 0px -30px 30px inset;
 }
 
 
 
 @media screen and (max-width: 760px) {
-    .status {
-        top: 70px;
-    }
-
-    #exp-bar {
-        top: 110px;
+    .buttons {
+        justify-content: center;
+        margin-top: 40vh;
     }
 }

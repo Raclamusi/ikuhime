@@ -1,21 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>ホーム - 育成！姫工生アバター</title>
+    <title>新たな資格･検定 - 育成！姫工生アバター</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:site_name" content="育成！姫工生アバター">
-    <meta property="og:title" content="ホーム - 育成！姫工生アバター">
+    <meta property="og:title" content="新たな資格･検定 - 育成！姫工生アバター">
     <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/home">
+    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/growing/new-qualification">
     <meta property="og:image" content="https://raclamusi.github.io/ikuhime/assets/image/icon.png">
     <meta name="twitter:card" content="summary">
     <link rel="shortcut icon icon" type="image/png" href="/ikuhime/assets/image/icon.png">
     <link rel="apple-touch-icon" type="image/png" href="/ikuhime/assets/image/icon.png">
     <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/common.css">
-    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/home.css">
+    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/new-qualification.css">
 </head>
 <body>
     <header class="header">
@@ -32,26 +32,21 @@
         </nav>
     </header>
     <main class="main">
-        <div class="avatar-grid">
-            <div class="profile">
-                <div class="profile-name">
-                    <span id="avatar-name">姫工生</span>&emsp;Lv.<span id="avatar-level">1</span>
-                </div>
-                <div class="profile-expbar"><div id="avatar-expbar" class="profile-expbar-inner"></div></div>
-                <div class="profile-exp">レベルアップまであと&ensp;<span id="avatar-exp">100</span>exp</div>
-                <a href="/ikuhime/setting/profile" class="profile-title">駆け出し姫工生</a>
-            </div>
-            <div class="avatar-images">
-                <img id="avatar" src="/ikuhime/assets/image/avatar.png">
-            </div>
-            <div class="buttons">
-                <a href="/ikuhime/growing">育成</a>
-            </div>
-        </div>
+        <a href="/ikuhime/growing" class="back">←戻る</a>
+        <h1>取った資格を登録しよう</h1>
+        <p>資格や検定は自分の成長の証！　忘れないように記録しよう。</p>
+        <form>
+            <label>検索<input type="search"></label>
+            <select>
+                
+            </select>
+        </form>
+        <a href="javascript: registration();">登録</a>
+        未実装です...
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/savedata.js"></script>
-    <script type="text/javascript" src="/ikuhime/assets/script/home.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/todays-event.js"></script>
 </body>
 </html>
