@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
-        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
         <nav id="menu" class="header-menu">
             <ul class="header-menulist">
                 <li><a href="/ikuhime/home">ホーム</a></li>
@@ -38,11 +38,14 @@
             <p>出来事を少しずつ書き残して、面接で話すことを溜めておこう！</p>
             <a href="/ikuhime/result/event" class="registration-link">今までの出来事を見る</a>
             <a href="javascript: nothingSpecial();" id="bonus" class="registration-button hidden">特になし！</a>
-            <form name="eventRecord">
-                <label>
-                    内容<br>
-                    <textarea name="content" placeholder="出来事の内容を簡単に書きましょう"></textarea>
-                </label>
+            <form name="eventRecord" onsubmit="return false;">
+                <p><label>タイトル<input name="title" type="text"></label></p>
+                <p>
+                    <label>
+                        内容<br>
+                        <textarea name="content" placeholder="出来事の内容、感想などを書きましょう"></textarea>
+                    </label>
+                </p>
             </form>
             <a href="javascript: registration();" class="registration-button">登録</a>
         </div>

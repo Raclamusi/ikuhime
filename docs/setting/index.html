@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
-        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
         <nav id="menu" class="header-menu">
             <ul class="header-menulist">
                 <li><a href="/ikuhime/home">ホーム</a></li>
@@ -35,11 +35,14 @@
         <a href="/ikuhime/home" class="back">←戻る</a>
         <div>
             <ul>
-                <li><a href="/ikuhime/setting/profile">プロフィール</a></li>
-                <li><a href="javascript: window.alert('未実装です...');">ユーザーデータ削除</a></li>
+                <li><a href="javascript: changeName();" class="big-button">名前の変更</a></li>
+                <li><a href="javascript: removeData();" class="big-button red">ユーザーデータ削除</a></li>
             </ul>
         </div>
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/savedata.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/setting.js"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
-        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
         <nav id="menu" class="header-menu">
             <ul class="header-menulist">
                 <li><a href="/ikuhime/home">ホーム</a></li>
@@ -32,17 +32,16 @@
         </nav>
     </header>
     <main class="main">
-        <div class="avatar-grid">
+        <div class="avatar-field">
             <div class="profile">
                 <div class="profile-name">
                     <span id="avatar-name">姫工生</span>&emsp;Lv.<span id="avatar-level">1</span>
                 </div>
                 <div class="profile-expbar"><div id="avatar-expbar" class="profile-expbar-inner"></div></div>
-                <div class="profile-exp">レベルアップまであと&ensp;<span id="avatar-exp">100</span>exp</div>
-                <a href="/ikuhime/setting/profile" class="profile-title">駆け出し姫工生</a>
+                <div class="profile-exp">レベルアップまであと <span id="avatar-exp">100</span>exp</div>
             </div>
-            <div class="avatar-images">
-                <img id="avatar" src="/ikuhime/assets/image/avatar.png">
+            <div id="images" class="avatar-images">
+                <img id="avatar">
             </div>
             <div class="buttons">
                 <a href="/ikuhime/growing">育成</a>
@@ -52,6 +51,7 @@
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/savedata.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/dataLists.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/home.js"></script>
 </body>
 </html>

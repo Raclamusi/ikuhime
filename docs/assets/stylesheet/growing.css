@@ -24,6 +24,7 @@
     text-align: center;
     text-decoration: none;
     line-height: 150px;
+    box-shadow: #000000aa 0px 0px 10px;
 }
 
 .buttons-event {

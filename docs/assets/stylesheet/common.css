@@ -3,6 +3,12 @@
     box-sizing: border-box;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 body {
     margin: 0;
     background-color: #f0f8ff;
@@ -74,6 +80,37 @@ body {
     text-decoration: none;
 }
 
+.big-button {
+    display: inline-block;
+    width: 80%;
+    height: 150px;
+    margin: 50px 10%;
+    border: 5px solid #0055aa;
+    border-radius: 50px;
+    font-size: 40px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 150px;
+    box-shadow: #000000aa 0px 0px 10px;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.small-button {
+    display: block;
+    width: 300px;
+    max-width: 90%;
+    height: 50px;
+    line-height: 50px;
+    margin: 15px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #ff8800;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
 
 
 @media screen and (max-width: 760px) {
@@ -123,8 +160,9 @@ body {
         padding-top: 50px;
     }
 
-    .tab-button {
-        padding: 15px 0;
-        font-size: 15px;
+    .big-button {
+        height: 100px;
+        font-size: 30px;
+        line-height: 100px;
     }
 }

@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
-        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
         <nav id="menu" class="header-menu">
             <ul class="header-menulist">
                 <li><a href="/ikuhime/home">ホーム</a></li>
@@ -36,13 +36,14 @@
         <p>「育成！姫工生アバター」は自分の分身であるアバターを作り、成長させることができます。</p>
         <p class="attension">このサイトで入力された情報は、外部には公開されません。<br>安心して本名でもなんでも入れちゃってください。<br>そのかわり、お使いの端末に情報が保存されるので、学校やネットカフェのパソコンなど、個人の端末でない場合は、<br>ほかの人があなたの入力した情報を閲覧できますので十分ご注意ください。</p>
         <form name="initForm">
-            <label>名前:<input type="text" name="name" value="姫工生" maxlength="10"></label>
+            <label>名前:<input type="text" name="name" value="姫工生"></label>
         </form>
         <a href="javascript: start();">スタート</a>
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/savedata.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/dataLists.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/welcome.js"></script>
 </body>
 </html>

@@ -1,4 +1,8 @@
 ﻿
+.avatar-field {
+    display: flex;
+}
+
 .profile {
 
 }
@@ -26,41 +30,26 @@
     font-size: 20px;
 }
 
-.profile-title {
-    display: block;
-    margin: 10px 30px;
-    width: 150px;
-    border: 4px ridge #ff3300;
-    color: #000000;
-    font-size: 15px;
-    text-align: center;
-    text-decoration: none;
-    background-color: #ff8800;
-}
-
 .avatar-images {
-    position: absolute;
-    left: 50%;
-    top: 30vh;
-    transform: translateX(-50%);
+    position: relative;
     display: block;
+    margin: 50px auto;
+    width: 400px;
+    height: 400px;
 }
 
 .avatar-images img {
-    width: 384px;
-}
-
-@media screen and (max-width:480px) {
-    .avatar-images img {
-        width: 256px;
-    }
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 400px;
 }
 
 .buttons {
     display: flex;
     justify-content: flex-end;
     width: auto;
-    margin: 100px 50px 0;
+    margin: 100px auto 0;
 }
 
 .buttons a {
@@ -74,7 +63,7 @@
     font-size: 35px;
     color: #ffffff;
     background-color: #ff5500;
-    box-shadow: #00000044 0px -30px 30px inset;
+    box-shadow: #00000044 0px -30px 30px inset, #000000bb 10px 10px 10px;
 }
 
 
@@ -82,6 +71,6 @@
 @media screen and (max-width: 760px) {
     .buttons {
         justify-content: center;
-        margin-top: 40vh;
+        margin-top: 70vh;
     }
 }

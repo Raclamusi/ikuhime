@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>新たな資格･検定 - 育成！姫工生アバター</title>
+    <title>資格･検定登録 - 育成！姫工生アバター</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:site_name" content="育成！姫工生アバター">
-    <meta property="og:title" content="新たな資格･検定 - 育成！姫工生アバター">
+    <meta property="og:title" content="資格･検定登録 - 育成！姫工生アバター">
     <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raclamusi.github.io/ikuhime/growing/new-qualification">
@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
-        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
         <nav id="menu" class="header-menu">
             <ul class="header-menulist">
                 <li><a href="/ikuhime/home">ホーム</a></li>
@@ -35,18 +35,21 @@
         <a href="/ikuhime/growing" class="back">←戻る</a>
         <h1>取った資格を登録しよう</h1>
         <p>資格や検定は自分の成長の証！　忘れないように記録しよう。</p>
-        <form>
-            <label>検索<input type="search"></label>
-            <select>
-                
-            </select>
+        <a href="/ikuhime/growing/other-qualification" class="link">ここにない資格、検定、または大会結果を登録</a>
+        <form name="addition" onsubmit="return false;">
+            <p><label>検索<input name="search" type="text"></label></p>
+            <p><label>主催<select name="organizer"><option value="none" selected>指定なし</option></select></label></p>
+            <p><label>資格･検定<select name="qualification"></select></label> </p>
+            <p><label>級<select name="grade"></select></label></p>
+            <p><label>取得年月<input name="month" type="month"></label></p>
+            <p><label>コメント(出来事の記録として保存されます)<br><textarea name="comment" placeholder="感想や頑張ったことなどを書きましょう"></textarea></label></p>
         </form>
-        <a href="javascript: registration();">登録</a>
-        未実装です...
+        <a href="javascript: registration();" class="small-button">登録</a>
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/savedata.js"></script>
-    <script type="text/javascript" src="/ikuhime/assets/script/todays-event.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/dataLists.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/new-qualification.js"></script>
 </body>
 </html>

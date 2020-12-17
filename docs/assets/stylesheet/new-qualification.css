@@ -1,0 +1,21 @@
+
+.link {
+    display: block;
+    width: 500px;
+    height: 40px;
+    line-height: 40px;
+    margin: 10px;
+    border: 3px solid #558800;
+    border-radius: 3px;
+    font-size: 18px;
+    text-align: center;
+    color: #558800;
+    background-color: #ccffcc
+}
+
+textarea {
+    margin: 0 5%;
+    width: 90%;
+    height: 150px;
+    font-size: 20px;
+}

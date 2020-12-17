@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>その他の資格･検定登録 - 育成！姫工生アバター</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
+    <meta property="og:site_name" content="育成！姫工生アバター">
+    <meta property="og:title" content="その他の資格･検定登録 - 育成！姫工生アバター">
+    <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/growing/other-qualification">
+    <meta property="og:image" content="https://raclamusi.github.io/ikuhime/assets/image/icon.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="shortcut icon icon" type="image/png" href="/ikuhime/assets/image/icon.png">
+    <link rel="apple-touch-icon" type="image/png" href="/ikuhime/assets/image/icon.png">
+    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/common.css">
+    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/other-qualification.css">
+</head>
+<body>
+    <header class="header">
+        <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <nav id="menu" class="header-menu">
+            <ul class="header-menulist">
+                <li><a href="/ikuhime/home">ホーム</a></li>
+                <li><a href="/ikuhime/growing">育成</a></li>
+                <li><a href="/ikuhime/equipment">装備</a></li>
+                <li><a href="/ikuhime/result">成果</a></li>
+                <li><a href="/ikuhime/setting">設定</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <a href="/ikuhime/growing" class="back">←戻る</a>
+        <h1>その他の資格･検定、大会結果の登録</h1>
+        <form name="addition" onsubmit="return false;">
+            <p><label>主催<input name="organizer" type="text"></label></p>
+            <p><label>資格･検定名 または 大会名<input name="qualification" type="text">※必須</label></p>
+            <p><label>級<input name="grade" type="text"></label></p>
+            <p><label>取得年月<input name="month" type="month"></label></p>
+            <h3>ジュニアマイスター</h3>
+            <p>
+                <label>区分番号<input name="jmClass" type="number"></label>
+                <label>
+                    区分記号
+                    <select name="jmRank">
+                        <option value="none" selected>-</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                    </select>
+                </label>
+            </p>
+            <h3>工業技術顕彰</h3>
+            <p>
+                <label>種類NO<input name="kgkClass" type="number"></label>
+                <label>
+                    等級NO
+                    <select name="kgkRank">
+                        <option value="none" selected>-</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                        <option value="d">d</option>
+                        <option value="e">e</option>
+                        <option value="f">f</option>
+                        <option value="g">g</option>
+                    </select>
+                </label>
+                <label>
+                    Points
+                    <select name="kgkPoint">
+                        <option value="none" selected>-</option>
+                        <option value="15">15</option>
+                        <option value="10">10</option>
+                        <option value="8">8</option>
+                        <option value="5">5</option>
+                        <option value="3">3</option>
+                        <option value="1">1</option>
+                    </select>
+                </label>
+            </p>
+            <p><label>コメント(出来事の記録として保存されます)<br><textarea name="comment" placeholder="感想や頑張ったことなどを書きましょう"></textarea></label></p>
+        </form>
+        <a href="javascript: registration();" class="small-button">登録</a>
+    </main>
+    <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/savedata.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/dataLists.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/other-qualification.js"></script>
+</body>
+</html>

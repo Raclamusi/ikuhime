@@ -1,6 +1,6 @@
 
 var menuIsOpen = false;
-function OpenMenu() {
+function openMenu() {
 	var menu = document.getElementById("menu");
 	var menuText = document.getElementById("menu-text");
 	if (menuIsOpen) {

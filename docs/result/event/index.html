@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>今までの出来事 - 育成！姫工生アバター</title>
+    <title>出来事の記録 - 育成！姫工生アバター</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:site_name" content="育成！姫工生アバター">
-    <meta property="og:title" content="今までの出来事 - 育成！姫工生アバター">
+    <meta property="og:title" content="出来事の記録 - 育成！姫工生アバター">
     <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raclamusi.github.io/ikuhime/result/event">
@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
-        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
         <nav id="menu" class="header-menu">
             <ul class="header-menulist">
                 <li><a href="/ikuhime/home">ホーム</a></li>
@@ -34,12 +34,11 @@
     <main class="main">
         <a href="/ikuhime/result" class="back">←戻る</a>
         <h1>今までの出来事</h1>
-        <div>
-            <ul>
+        <div class="event">
+            <ul id="list" class="event-list">
 
             </ul>
         </div>
-        未実装です...
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>

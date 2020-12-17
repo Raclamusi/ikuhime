@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
-        <a href="javascript: OpenMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
         <nav id="menu" class="header-menu">
             <ul class="header-menulist">
                 <li><a href="/ikuhime/home">ホーム</a></li>
@@ -34,12 +34,24 @@
     <main class="main">
         <a href="/ikuhime/result" class="back">←戻る</a>
         <h1>取得した資格･検定</h1>
-        <div>
-            <ul>
+        <div class="qualif">
+            <table class="qualif-table" border="1">
+                <thead>
+                    <tr>
+                        <th>取得年月</th>
+                        <th>主催</th>
+                        <th>名前</th>
+                        <th>JM</th>
+                        <th>顕彰</th>
+                        <th>JMポイント</th>
+                        <th>顕彰ポイント</th>
+                    </tr>
+                </thead>
+                <tbody id="table">
 
-            </ul>
+                </tbody>
+            </table>
         </div>
-        未実装です...
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
