@@ -25,7 +25,7 @@
 .equip {
     margin: 50px auto;
     width: 600px;
-    height: 250px;
+    height: 350px;
     border: 2px solid #888888;
     overflow: auto;
 }
@@ -38,7 +38,7 @@
 
 .equip-list li {
     display: flex;
-    height: 100px;
+    min-height: 100px;
     border: 2px solid #aaaaaa;
     background-color: #eeffdd;
     cursor: default;
@@ -63,11 +63,12 @@
 }
 
 .equip-list h3 {
-    margin: 10px 0;
+    margin: 10px 0 0;
 }
 
 .equip-list p {
     margin:  0;
+    line-height: 100%;
 }
 
 
@@ -77,5 +78,27 @@
         top: 100px;
         width: 280px;
         height: 300px;
+    }
+
+    .equip {
+        height: 350px;
+    }
+
+    .equip-list img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .equip-list li {
+        min-height: 80px;
+    }
+
+    .equip-list h3 {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .equip-list p {
+        font-size: 12px;
     }
 }

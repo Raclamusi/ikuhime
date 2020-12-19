@@ -69,8 +69,28 @@
 
 
 @media screen and (max-width: 760px) {
+    .avatar-field {
+        display: block;
+    }
+
+    .avatar-images {
+        margin: 0 auto;
+        width: 350px;
+        height: 350px;
+    }
+
+    .avatar-images img {
+        width: 350px;
+    }
+
     .buttons {
         justify-content: center;
-        margin-top: 70vh;
+        margin-top: 20px;
+    }
+
+    .buttons a {
+        height: 80px;
+        line-height: 80px;
+        box-shadow: #00000044 0px -20px 20px inset, #000000bb 5px 5px 5px;
     }
 }

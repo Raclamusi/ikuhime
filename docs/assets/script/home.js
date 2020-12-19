@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
     while (savedata.exp >= savedata.level * 100 + 400) {
         savedata.exp -= savedata.level * 100 + 400;
         savedata.level++;
-        window.alert("レベルアップしました！\nLv. " + (savedata.level - 1) + " → " + savedata.level);
+        setTimeout(window.alert, 500, "レベルアップしました！\nLv. " + (savedata.level - 1) + " → " + savedata.level);
 	}
     nameSpan.textContent = savedata.name;
     levelSpan.textContent = savedata.level + "";
@@ -29,7 +29,7 @@ window.addEventListener("load", function () {
         if (!savedata.enableEquip[ac.equip]) {
             if (ac.condition.check()) {
                 savedata.enableEquip[ac.equip] = true;
-                window.alert("実績解除！\n「" + ac.title + "」\n装備を獲得しました！");
+                setTimeout(window.alert, 500, "実績解除！「" + ac.title + "」\n装備を獲得しました！");
 			}
 		}
     }
