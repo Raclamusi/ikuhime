@@ -14,7 +14,13 @@ function WtoJ(year, month) {
 
 window.addEventListener("load", function () {
     var table = document.getElementById("table");
+    var jmPointSpan = document.getElementById("jm-point");
+    var jmPrizeSpan = document.getElementById("jm-prize");
+    var kgkPointSpan = document.getElementById("kgk-point");
+    var kgkPrizeSpan = document.getElementById("kgk-prize");
     var quals = savedata.quals;
+    var jmTotal = 0;
+    var kgkTotal = 0;
     for (var i = 0; i < quals.length; i++) {
         var q = quals[i];
         var row = document.createElement("tr");
@@ -32,11 +38,17 @@ window.addEventListener("load", function () {
         kgk.textContent = q.kgkClass + q.grade.kgkRank;
         jmp.textContent = q.grade.jmPoint + "";
         kgkp.textContent = q.grade.kgkPoint + "";
-        if (!q.jmEnable) {
+        if (q.jmEnable) {
+            jmTotal += q.grade.jmPoint;
+        }
+        else {
             jm.classList.add("gray-item");
             jmp.classList.add("gray-item");
         }
-        if (!q.kgkEnable) {
+        if (q.kgkEnable) {
+            kgkTotal += q.grade.kgkPoint;
+        }
+        else {
             kgk.classList.add("gray-item");
             kgkp.classList.add("gray-item");
         }
@@ -49,4 +61,10 @@ window.addEventListener("load", function () {
         row.appendChild(kgkp);
         table.appendChild(row);
     }
+    jmPointSpan.textContent = jmTotal + "";
+    jmPrizeSpan.textContent = jmTotal >= 45 ? "ゴールド！" : jmTotal >= 30 ? "シルバー" : jmTotal >= 20 ? "ブロンズ" : "";
+    jmPrizeSpan.style.color = jmTotal >= 45 ? "#ffbb00" : jmTotal >= 30 ? "#aaaaaa" : jmTotal >= 20 ? "#bb7733" : "#000000";
+    kgkPointSpan.textContent = kgkTotal + "";
+    kgkPrizeSpan.textContent = kgkTotal >= 60 ? "金賞！" : kgkTotal >= 40 ? "銀賞" : kgkTotal >= 20 ? "顕彰" : "";
+    kgkPrizeSpan.style.color = kgkTotal >= 60 ? "#ffbb00" : kgkTotal >= 40 ? "#aaaaaa" : kgkTotal >= 20 ? "#bb7733" : "#000000";
 });
