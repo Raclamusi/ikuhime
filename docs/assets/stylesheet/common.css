@@ -135,25 +135,40 @@ body {
     }
 
     .header-menu {
-        display: none;
+        display: flex;
         margin: 0;
-        padding: 30px 50px;
+        padding: 0;
         width: 100%;
-        min-height: calc(100vh - 50px);
+        height: 0;
         position: absolute;
         left: 0;
         top: 50px;
-        background-color: #000000cc;
-        z-index: -1;
+        background-color: #000000dd;
+        overflow: hidden;
+        transition: height ease 0.5s;
     }
 
     .header-menuopen {
-        display: block;
+        height: calc(100vh - 50px);
+    }
+
+    .header-menulist {
+        margin: 10px 50px;
+        width: 100%;
+        font-size: 25px;
     }
 
     .header-menulist li {
         float: none;
-        margin: 20px 0;
+        margin: 50px 0;
+        padding: 5px 20px;
+        border-top: 1.5px solid #ffffff;
+        border-bottom: 1.5px solid #ffffff;
+    }
+
+    .header-menulist a {
+        display: inline-block;
+        width: 100%;
     }
 
     .main {
