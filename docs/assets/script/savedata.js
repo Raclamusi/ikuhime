@@ -9,7 +9,7 @@ function EventRecord(title, content) {
 function ObtainedQualification(id, gradeId, organizer, name, jmClass, kgkClass, grade, year, month) {
     this.id = id;
     this.gradeId = gradeId;
-	this.organizer = organizer;
+    this.organizer = organizer;
     this.name = name;
     this.jmClass = jmClass;
     this.kgkClass = kgkClass;
