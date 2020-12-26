@@ -142,7 +142,7 @@ var qualificationList = {
         new Grade("第二級", "D", "b", 8),
         new Grade("第三級", "E", "c", 5),
         new Grade("第四級", "F", "d", 3),
-    ],)
+    ]),
 
 };
 

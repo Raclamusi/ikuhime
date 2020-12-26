@@ -6,7 +6,7 @@ function EventRecord(title, content) {
 }
 
 
-function ObtainedQualification(id, gradeId, organizer, name, jmClass, kgkClass, grade, year, month, jmEnable = true, kgkEnable = true) {
+function ObtainedQualification(id, gradeId, organizer, name, jmClass, kgkClass, grade, year, month) {
     this.id = id;
     this.gradeId = gradeId;
 	this.organizer = organizer;
@@ -16,8 +16,8 @@ function ObtainedQualification(id, gradeId, organizer, name, jmClass, kgkClass, 
     this.grade = grade;
     this.year = year;
     this.month = month;
-    this.jmEnable = jmEnable;
-    this.kgkEnable = kgkEnable;
+    this.jmEnable = true;
+    this.kgkEnable = true;
 }
 
 
