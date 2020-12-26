@@ -2,13 +2,13 @@
 function start() {
     var name = document.initForm.name.value;
     if (name == "") {
-        window.alert("–¼‘O‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢");
+        window.alert("åå‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„");
         return;
     }
-	savedata.name = name;
-	savedata.level = 1;
-	savedata.exp = 0;
-	savedata.eventRecords = [];
+    savedata.name = name;
+    savedata.level = 1;
+    savedata.exp = 0;
+    savedata.eventRecords = [];
     savedata.bonusPreTime = 0;
     savedata.quals = [];
     savedata.avatar = 0;
@@ -16,7 +16,7 @@ function start() {
     var ee = new Array(equipList.length);
     for (var i = 0; i < ee.length; i++) {
         ee[i] = false;
-	}
+    }
     savedata.enableEquip = ee;
-	location.href = "/ikuhime/home";
+    location.href = "/ikuhime/home";
 }
