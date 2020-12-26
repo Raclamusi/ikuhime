@@ -47,19 +47,35 @@
 
 .buttons {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
     width: auto;
     margin: 100px auto 0;
 }
 
 .buttons a {
-    display: inline-block;
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.buttons-download {
+    width: 230px;
+    height: 40px;
+    line-height: 40px;
+    border: 3px solid #558800;
+    font-size: 16px;
+    color: #558800;
+    background-color: #ccffcc;
+}
+
+.buttons-growing {
     width: 200px;
     height: 200px;
     line-height: 200px;
     border-radius: 100px;
-    text-align: center;
-    text-decoration: none;
     font-size: 35px;
     color: #ffffff;
     background-color: #ff5500;
@@ -85,10 +101,14 @@
 
     .buttons {
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 0;
     }
 
     .buttons a {
+        margin: 10px 0;
+    }
+
+    .buttons-growing {
         height: 80px;
         line-height: 80px;
         box-shadow: #00000044 0px -20px 20px inset, #000000bb 5px 5px 5px;

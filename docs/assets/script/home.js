@@ -2,11 +2,6 @@
 window.addEventListener("load", function () {
     var images = document.getElementById("images");
     var avatar = document.getElementById("avatar");
-    var nameSpan = document.getElementById("avatar-name");
-    var levelSpan = document.getElementById("avatar-level");
-    var expSpan = document.getElementById("avatar-exp")
-    var expBar = document.getElementById("avatar-expbar");
-
     avatar.src = avatarList[savedata.avatar].url;
     for (var i = 0; i < savedata.equips.length; i++) {
         var img = document.createElement("img");
@@ -14,6 +9,10 @@ window.addEventListener("load", function () {
         images.appendChild(img);
     }
 
+    var nameSpan = document.getElementById("avatar-name");
+    var levelSpan = document.getElementById("avatar-level");
+    var expSpan = document.getElementById("avatar-exp")
+    var expBar = document.getElementById("avatar-expbar");
     while (savedata.exp >= savedata.level * 100 + 400) {
         savedata.exp -= savedata.level * 100 + 400;
         savedata.level++;
@@ -34,4 +33,21 @@ window.addEventListener("load", function () {
 		}
     }
     savedata.save();
+
+    var downloadLink = document.getElementById("download");
+    var canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 256;
+    var ctx = canvas.getContext("2d");
+    var img = new Image();
+    var i = 0;
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+        if (i < savedata.equips.length) {
+            img.src = equipList[savedata.equips[i++]].url;
+        }
+        else {
+            downloadLink.href = canvas.toDataURL();
+		}
+    };
+    img.src = avatarList[savedata.avatar].url;
 });
