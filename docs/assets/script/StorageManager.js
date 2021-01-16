@@ -32,7 +32,7 @@ StorageManager.prototype.add = function (name) {
 StorageManager.prototype.clear = function () {
     for (var i = 0; i < this.storage.length;) {
         var k = this.storage.key(i);
-        if (k.startsWith(this.appName + "_")) {
+        if (k.match(this.appName + "_") !== null) {
             this.storage.removeItem(k);
         }
         else {

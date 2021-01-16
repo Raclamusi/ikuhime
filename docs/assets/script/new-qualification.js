@@ -104,11 +104,11 @@ function registration() {
                         savedata.quals[i].kgkEnable = false;
                     }
                 }
-                else if (g.name.startsWith("乙種")) {
+                else if (g.name.match(/乙種/) !== null) {
                     if (v.grade.name === "甲種") {
                         nq.jmEnable = false;
                     }
-                    else if (v.grade.name.startsWith("乙種")) {
+                    else if (v.grade.name.match(/乙種/) !== null) {
                         otsuCount++;
                         if (otsuCount == 1) {
                             nq.grade = JSON.parse(JSON.stringify(g));

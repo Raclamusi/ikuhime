@@ -56,7 +56,7 @@ window.addEventListener("load", function () {
         div.appendChild(p);
         li.appendChild(img);
         li.appendChild(div);
-        if (savedata.equips.includes(i)) {
+        if (savedata.equips.indexOf(i) != -1) {
             li.classList.add("equip-selected");
         }
         (function () {
@@ -66,7 +66,7 @@ window.addEventListener("load", function () {
                 var items = alist.childNodes;
                 var images = document.getElementById("images");
                 var imgs = images.childNodes;
-                if (savedata.equips.includes(ei)) {
+                if (savedata.equips.indexOf(ei) != -1) {
                     var e = savedata.equips;
                     for (var j = 0; j < e.length; j++) {
                         if (e[j] == ei) {
