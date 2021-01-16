@@ -18,7 +18,7 @@ window.addEventListener("load", function () {
     var jmPrizeSpan = document.getElementById("jm-prize");
     var kgkPointSpan = document.getElementById("kgk-point");
     var kgkPrizeSpan = document.getElementById("kgk-prize");
-    var quals = savedata.quals;
+    var quals = userdata.quals;
     var jmTotal = 0;
     var kgkTotal = 0;
     for (var i = 0; i < quals.length; i++) {

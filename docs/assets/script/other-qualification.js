@@ -25,8 +25,8 @@ function registration() {
     
     var nq = new ObtainedQualification(null, null, or, ql, jmClass, kgkClass, new Grade(gr, jmRank, kgkRank, kgkPoint), year, month);
     var index = null;
-    for (var i = 0; i < savedata.quals.length; i++) {
-        var v = savedata.quals[i];
+    for (var i = 0; i < userdata.quals.length; i++) {
+        var v = userdata.quals[i];
         if (index === null) {
             if (year > v.year || year == v.year && month > v.month) {
                 index = i;
@@ -34,7 +34,7 @@ function registration() {
         }
         if (jc != NaN && v.jmClass === jc) {
             if (v.grade.jmPoint < jmPoint) {
-                savedata.quals[i].jmEnable = false;
+                userdata.quals[i].jmEnable = false;
             }
             else if (v.grade.jmPoint > jmPoint) {
                 nq.jmEnable = false;
@@ -42,7 +42,7 @@ function registration() {
         }
         if (kc != NaN && v.kgkClass === kc) {
             if (v.grade.kgkPoint < kgkPoint) {
-                savedata.quals[i].kgkEnable = false;
+                userdata.quals[i].kgkEnable = false;
             }
             else if (v.grade.kgkPoint > kgkPoint) {
                 nq.kgkEnable = false;
@@ -50,15 +50,15 @@ function registration() {
         }
     }
     if (index === null) {
-        savedata.quals.push(nq);
+        userdata.quals.push(nq);
     }
     else {
-        savedata.quals.splice(index, 0, nq);
+        userdata.quals.splice(index, 0, nq);
     }
     if (cm !== "") {
-        savedata.eventRecords.push(new EventRecord(ql + " " + gr, cm));
+        userdata.eventRecords.push(new EventRecord(ql + " " + gr, cm));
     }
-    savedata.exp = 500 + Math.max(jmPoint * 100, kgkPoint * 200);
-    savedata.save();
+    userdata.exp = 500 + Math.max(jmPoint * 100, kgkPoint * 200);
+    userdata.save();
     location.href = "/ikuhime/home";
 }

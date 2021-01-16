@@ -63,8 +63,8 @@ function registration() {
         else if (g.name === "乙種５類") nq.jmClass = 185;
         else if (g.name === "乙種６類") nq.jmClass = 186;
     }
-    for (var i = 0; i < savedata.quals.length; i++) {
-        var v = savedata.quals[i];
+    for (var i = 0; i < userdata.quals.length; i++) {
+        var v = userdata.quals[i];
         if (index === null) {
             if (year > v.year || (year == v.year && month > v.month)) {
                 index = i;
@@ -77,14 +77,14 @@ function registration() {
         }
         else if (q.name === "機械製図検定") {
             if (v.name === "基礎製図検定") {
-                savedata.quals[i].kgkEnable = false;
+                userdata.quals[i].kgkEnable = false;
             }
         }
         if (v.id === qual) {
             if (v.gradeId == grade) {
                 if (window.confirm("この検定はすでに登録されています\n情報を更新しますか？")) {
-                    savedata.quals[i].year = year;
-                    savedata.quals[i].month = month;
+                    userdata.quals[i].year = year;
+                    userdata.quals[i].month = month;
                     nq = null;
                     break;
                 }
@@ -95,13 +95,13 @@ function registration() {
             else if (q.name === "危険物取扱者") {
                 if (g.name === "乙種４類") {
                     if (v.grade.name === "丙種") {
-                        savedata.quals[i].jmEnable = false;
+                        userdata.quals[i].jmEnable = false;
                     }
                 }
                 if (g.name === "甲種") {
-                    savedata.quals[i].jmEnable = false;
+                    userdata.quals[i].jmEnable = false;
                     if (v.grade.kgkPoint != 8) {
-                        savedata.quals[i].kgkEnable = false;
+                        userdata.quals[i].kgkEnable = false;
                     }
                 }
                 else if (g.name.match(/乙種/) !== null) {
@@ -120,7 +120,7 @@ function registration() {
                         }
                     }
                     else {
-                        savedata.quals[i].kgkEnable = false;
+                        userdata.quals[i].kgkEnable = false;
                     }
                 }
                 else {
@@ -129,9 +129,9 @@ function registration() {
                 }
             }
             else if (v.gradeId > grade) {
-                savedata.quals[i].jmEnable = false;
+                userdata.quals[i].jmEnable = false;
                 if (q.name !== "電気工事士") {
-                    savedata.quals[i].kgkEnable = false;
+                    userdata.quals[i].kgkEnable = false;
                 }
             }
             else {
@@ -144,17 +144,17 @@ function registration() {
     }
     if (nq !== null) {
         if (index === null) {
-            savedata.quals.push(nq);
+            userdata.quals.push(nq);
         }
         else {
-            savedata.quals.splice(index, 0, nq);
+            userdata.quals.splice(index, 0, nq);
         }
     }
     if (com !== "") {
-        savedata.eventRecords.push(new EventRecord(q.name + " " + g.name, com));
+        userdata.eventRecords.push(new EventRecord(q.name + " " + g.name, com));
     }
-    savedata.exp = 500 + Math.max(g.jmPoint * 100, g.kgkPoint * 200);
-    savedata.save();
+    userdata.exp = 500 + Math.max(g.jmPoint * 100, g.kgkPoint * 200);
+    userdata.save();
     location.href = "/ikuhime/home";
 }
 

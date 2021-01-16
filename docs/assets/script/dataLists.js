@@ -165,7 +165,7 @@ function LevelCond(level) {
 }
 
 LevelCond.prototype.check = function () {
-    return savedata.level >= this.level;
+    return userdata.level >= this.level;
 };
 
 function QualifCond(qualif, grade) {
@@ -174,8 +174,8 @@ function QualifCond(qualif, grade) {
 }
 
 QualifCond.prototype.check = function () {
-    for (var i = 0; i < savedata.quals.length; i++) {
-        var v = savedata.quals[i];
+    for (var i = 0; i < userdata.quals.length; i++) {
+        var v = userdata.quals[i];
         if (v.id == this.qualif && v.gradeId <= this.grade) {
             return true;
 		}
@@ -189,8 +189,8 @@ function JmPointCond(point) {
 
 JmPointCond.prototype.check = function () {
     var p = 0;
-    for (var i = 0; i < savedata.quals.length; i++) {
-        p += savedata.quals[i].grade.jmPoint;
+    for (var i = 0; i < userdata.quals.length; i++) {
+        p += userdata.quals[i].grade.jmPoint;
     }
     return p >= this.point;
 };
@@ -201,8 +201,8 @@ function KgkPointCond(point) {
 
 KgkPointCond.prototype.check = function () {
     var p = 0;
-    for (var i = 0; i < savedata.quals.length; i++) {
-        p += savedata.quals[i].grade.kgkPoint;
+    for (var i = 0; i < userdata.quals.length; i++) {
+        p += userdata.quals[i].grade.kgkPoint;
     }
     return p >= this.point;
 };

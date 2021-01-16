@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
         div.appendChild(p);
         li.appendChild(img);
         li.appendChild(div);
-        if (i == savedata.avatar) {
+        if (i == userdata.avatar) {
             li.classList.add("equip-selected");
 		}
         (function () {
@@ -30,9 +30,9 @@ window.addEventListener("load", function () {
                         items[j].classList.remove("equip-selected");
                     }
                 }
-                savedata.avatar = ai;
-                document.getElementById("avatar").src = avatarList[savedata.avatar].url;
-                savedata.save();
+                userdata.avatar = ai;
+                document.getElementById("avatar").src = avatarList[userdata.avatar].url;
+                userdata.save();
             });
         })();
         alist.appendChild(li);
@@ -40,7 +40,7 @@ window.addEventListener("load", function () {
 
     var elist = document.getElementById("equip-list");
     for (var i = 0; i < equipList.length; i++) {
-        if (!savedata.enableEquip[i]) {
+        if (!userdata.enableEquip[i]) {
             continue;
 		}
         var v = equipList[i];
@@ -56,7 +56,7 @@ window.addEventListener("load", function () {
         div.appendChild(p);
         li.appendChild(img);
         li.appendChild(div);
-        if (savedata.equips.indexOf(i) != -1) {
+        if (userdata.equips.indexOf(i) != -1) {
             li.classList.add("equip-selected");
         }
         (function () {
@@ -66,8 +66,8 @@ window.addEventListener("load", function () {
                 var items = alist.childNodes;
                 var images = document.getElementById("images");
                 var imgs = images.childNodes;
-                if (savedata.equips.indexOf(ei) != -1) {
-                    var e = savedata.equips;
+                if (userdata.equips.indexOf(ei) != -1) {
+                    var e = userdata.equips;
                     for (var j = 0; j < e.length; j++) {
                         if (e[j] == ei) {
                             e.splice(j, 1);
@@ -84,29 +84,29 @@ window.addEventListener("load", function () {
 					}
                 }
                 else {
-                    if (savedata.equips.length >= savedata.level) {
+                    if (userdata.equips.length >= userdata.level) {
                         window.alert("装備可能上限数に達しました");
                         return;
 					}
-                    savedata.equips.push(ei);
+                    userdata.equips.push(ei);
                     item.classList.add("equip-selected");
                     var img = document.createElement("img");
                     img.src = equipList[ei].url;
                     img.id = ei;
                     images.appendChild(img);
                 }
-                savedata.save();
+                userdata.save();
             });
         })();
         elist.appendChild(li);
     }
 
-    document.getElementById("avatar").src = avatarList[savedata.avatar].url;
+    document.getElementById("avatar").src = avatarList[userdata.avatar].url;
     var images = document.getElementById("images");
-    for (var i = 0; i < savedata.equips.length; i++) {
+    for (var i = 0; i < userdata.equips.length; i++) {
         var img = document.createElement("img");
-        img.src = equipList[savedata.equips[i]].url;
-        img.id = savedata.equips[i];
+        img.src = equipList[userdata.equips[i]].url;
+        img.id = userdata.equips[i];
         images.appendChild(img);
     }
 });

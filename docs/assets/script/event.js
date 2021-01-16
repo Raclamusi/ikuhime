@@ -1,7 +1,7 @@
 
 window.addEventListener("load", function () {
     var list = document.getElementById("list");
-    var events = savedata.eventRecords;
+    var events = userdata.eventRecords;
     for (var i = 0; i < events.length; i++) {
         var v = events[i];
         var li = document.createElement("li");
