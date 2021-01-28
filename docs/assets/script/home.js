@@ -1,14 +1,5 @@
 
 window.addEventListener("load", function () {
-    var images = document.getElementById("images");
-    var avatar = document.getElementById("avatar");
-    avatar.src = avatarList[userdata.avatar].url;
-    for (var i = 0; i < userdata.equips.length; i++) {
-        var img = document.createElement("img");
-        img.src = equipList[userdata.equips[i]].url;
-        images.appendChild(img);
-    }
-
     var nameSpan = document.getElementById("avatar-name");
     var levelSpan = document.getElementById("avatar-level");
     var expSpan = document.getElementById("avatar-exp")
@@ -36,7 +27,7 @@ window.addEventListener("load", function () {
     userdata.save("enableEquip");
 
     var downloadLink = document.getElementById("download");
-    var canvas = document.createElement("canvas");
+    var canvas = document.getElementById("avatar");
     canvas.width = canvas.height = 256;
     var ctx = canvas.getContext("2d");
     var img = new Image();

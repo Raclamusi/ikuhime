@@ -30,19 +30,13 @@
     font-size: 20px;
 }
 
-.avatar-images {
-    position: relative;
-    display: block;
+.avatar {
     margin: 50px auto;
     width: 400px;
-    height: 400px;
 }
 
-.avatar-images img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 400px;
+.avatar-canvas {
+    width: 100%;
 }
 
 .buttons {
@@ -89,13 +83,8 @@
         display: block;
     }
 
-    .avatar-images {
+    .avatar {
         margin: 0 auto;
-        width: 350px;
-        height: 350px;
-    }
-
-    .avatar-images img {
         width: 350px;
     }
 
