@@ -13,10 +13,10 @@ function start() {
     userdata.quals = [];
     userdata.avatar = 0;
     userdata.equips = [];
-    var ee = new Array(equipList.length);
+    userdata.enableEquip = new Array(equipList.length);
     for (var i = 0; i < ee.length; i++) {
-        ee[i] = false;
+        userdata.enableEquip[i] = false;
     }
-    userdata.enableEquip = ee;
+    userdata.save();
     location.href = "/ikuhime/home";
 }

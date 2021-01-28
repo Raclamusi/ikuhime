@@ -17,7 +17,8 @@ window.addEventListener("load", function () {
         userdata.exp -= userdata.level * 100 + 400;
         userdata.level++;
         setTimeout(window.alert, 500, "レベルアップしました！\nLv. " + (userdata.level - 1) + " → " + userdata.level);
-	}
+    }
+    userdata.save("exp", "level");
     nameSpan.textContent = userdata.name;
     levelSpan.textContent = userdata.level + "";
     expSpan.textContent = userdata.level * 100 + 400 - userdata.exp + "";
@@ -32,7 +33,7 @@ window.addEventListener("load", function () {
 			}
 		}
     }
-    userdata.save();
+    userdata.save("enableEquip");
 
     var downloadLink = document.getElementById("download");
     var canvas = document.createElement("canvas");

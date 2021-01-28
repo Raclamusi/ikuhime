@@ -55,10 +55,13 @@ function registration() {
     else {
         userdata.quals.splice(index, 0, nq);
     }
+    userdata.save("quals");
+
     if (cm !== "") {
         userdata.eventRecords.push(new EventRecord(ql + " " + gr, cm));
+        userdata.save("eventRecords");
     }
     userdata.exp = 500 + Math.max(jmPoint * 100, kgkPoint * 200);
-    userdata.save();
+    userdata.save("exp");
     location.href = "/ikuhime/home";
 }

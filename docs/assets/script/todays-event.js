@@ -12,7 +12,7 @@ function nothingSpecial() {
     if (userdata.bonusPreTime < nowTime) {
         userdata.bonusPreTime = nowTime;
         userdata.exp += 100;
-        userdata.save();
+        userdata.save("bonusPreTime", "exp");
         location.href = "/ikuhime/home";
     }
 }
@@ -30,6 +30,6 @@ function registration() {
     }
     userdata.eventRecords.push(new EventRecord(title, content));
     userdata.exp += 100 + 3 * Math.min(content.length, 300);
-    userdata.save();
+    userdata.save("eventRecords", "exp");
     location.href = "/ikuhime/home";
 }

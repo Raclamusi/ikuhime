@@ -150,11 +150,14 @@ function registration() {
             userdata.quals.splice(index, 0, nq);
         }
     }
+    userdata.save("quals");
+
     if (com !== "") {
         userdata.eventRecords.push(new EventRecord(q.name + " " + g.name, com));
+        userdata.save("eventRecords");
     }
     userdata.exp = 500 + Math.max(g.jmPoint * 100, g.kgkPoint * 200);
-    userdata.save();
+    userdata.save("exp");
     location.href = "/ikuhime/home";
 }
 

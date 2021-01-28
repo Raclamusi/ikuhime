@@ -22,9 +22,7 @@ function ObtainedQualification(id, gradeId, organizer, name, jmClass, kgkClass, 
 
 
 var userdata = new StorageManager("ikuhime", localStorage);
-var userdataNames = ["name", "level", "exp", "eventRecords", "bonusPreTime", "quals", "avatar", "equips", "enableEquip"];
-for (var i = 0; i < userdataNames.length; i++) {
-    if (userdata.add(userdataNames[i]) && location.pathname.match(/\/ikuhime\/welcome/) === null) {
-        location.href = "/ikuhime/welcome";
-    }
+userdata.load();
+if (userdata.names.length == 0 && location.pathname.match(/\/ikuhime\/welcome/) === null) {
+    location.href = "/ikuhime/welcome";
 }

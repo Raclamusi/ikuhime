@@ -32,7 +32,7 @@ window.addEventListener("load", function () {
                 }
                 userdata.avatar = ai;
                 document.getElementById("avatar").src = avatarList[userdata.avatar].url;
-                userdata.save();
+                userdata.save("avatar");
             });
         })();
         alist.appendChild(li);
@@ -95,7 +95,7 @@ window.addEventListener("load", function () {
                     img.id = ei;
                     images.appendChild(img);
                 }
-                userdata.save();
+                userdata.save("equips");
             });
         })();
         elist.appendChild(li);

@@ -3,6 +3,7 @@ function changeName() {
     var name = window.prompt("新しい名前を入力してください", userdata.name);
     if (name !== "") {
         userdata.name = name;
+        userdata.save("name");
         window.alert("名前を変更しました");
     }
 }
