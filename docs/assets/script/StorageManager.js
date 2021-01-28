@@ -20,6 +20,7 @@ StorageManager.prototype.clear = function () {
     var prefix = this.appName + "_";
     var keys = [];
     for (var i = 0; i < this.storage.length; i++) {
+        var k = this.storage.key(i);
         if (k.match(prefix) !== null) {
             keys.push(this.storage.key(i));
         }

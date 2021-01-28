@@ -5,6 +5,10 @@ function start() {
         window.alert("名前を入力してください");
         return;
     }
+    var data = ["name", "level", "exp", "eventRecords", "bonusPreTime", "quals", "avatar", "equips", "enableEquip"];
+    for (var i = 0; i < data.length; i++) {
+        userdata.add(data[i]);
+	}
     userdata.name = name;
     userdata.level = 1;
     userdata.exp = 0;
@@ -14,7 +18,7 @@ function start() {
     userdata.avatar = 0;
     userdata.equips = [];
     userdata.enableEquip = new Array(equipList.length);
-    for (var i = 0; i < ee.length; i++) {
+    for (var i = 0; i < equipList.length; i++) {
         userdata.enableEquip[i] = false;
     }
     userdata.save();
