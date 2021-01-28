@@ -35,7 +35,7 @@ StorageManager.prototype.clear = function () {
 // 引数で渡された名前の要素を保存します。
 // 引数を渡さない場合はすべての要素を保存します。
 StorageManager.prototype.save = function () {
-    var names = arguments.length == 0 ? this.names : Array.from(arguments);
+    var names = arguments.length == 0 ? this.names : arguments;
     for (var i = 0; i < names.length; i++) {
         if (names[i] in this && this[names[i]] !== null) {
             this.storage.setItem(this.appName + "_" + names[i], JSON.stringify(this[names[i]]));
