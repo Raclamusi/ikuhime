@@ -150,20 +150,26 @@ body {
 
     .header-menuopen {
         height: calc(100vh - 50px);
+        touch-action: none;
     }
 
     .header-menulist {
-        margin: 10px 50px;
+        margin: 30px 50px;
         width: 100%;
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .header-menulist li {
         float: none;
-        margin: 50px 0;
+        margin: 30px 0;
         padding: 5px 20px;
         border-top: 1.5px solid #ffffff;
         border-bottom: 1.5px solid #ffffff;
+        transition: background-color ease 100ms;
+    }
+
+    .header-menulist li:hover {
+        background-color: #ffffff55;
     }
 
     .header-menulist a {
