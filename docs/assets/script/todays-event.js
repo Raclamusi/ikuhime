@@ -1,33 +1,34 @@
 
-var now = new Date();
-var nowTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+const nothingSpecial = function () {
+    const now = new Date();
+    const nowTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    userdata.bonusPreTime = nowTime;
+    userdata.exp += 100;
+    userdata.save("bonusPreTime", "exp");
+    location.href = "/ikuhime/home";
+};
 
-window.addEventListener("load", function () {
-    document.getElementById("bonus").remove();
-});
-
-function nothingSpecial() {
-    if (userdata.bonusPreTime < nowTime) {
-        userdata.bonusPreTime = nowTime;
-        userdata.exp += 100;
-        userdata.save("bonusPreTime", "exp");
-        location.href = "/ikuhime/home";
-    }
-}
-
-function registration() {
-    var title = document.eventRecord.title.value;
+const registration = function () {
+    const title = document.eventRecord.title.value;
     if (title === "") {
-        window.alert("タイトルを入力してください");
+        alert("タイトルを入力してください");
         return;
     }
-    var content = document.eventRecord.content.value;
+    const content = document.eventRecord.content.value;
     if (content === "") {
-        window.alert("内容を入力してください");
+        alert("内容を入力してください");
         return;
     }
     userdata.eventRecords.push(new EventRecord(title, content));
     userdata.exp += 100 + 3 * Math.min(content.length, 300);
     userdata.save("eventRecords", "exp");
     location.href = "/ikuhime/home";
-}
+};
+
+(function () {
+    const now = new Date();
+    const nowTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    if (userdata.bonusPreTime >= nowTime) {
+        document.getElementById("bonus").remove();
+    }
+})();

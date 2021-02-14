@@ -1,28 +1,37 @@
 
-function EventRecord(title, content) {
+const EventRecord = function (title, content) {
     this.title = title;
     this.content = content;
     this.date = new Date();
-}
+};
 
 
-function ObtainedQualification(id, gradeId, organizer, name, jmClass, kgkClass, grade, year, month) {
+const ObtainedQualification = function (id, gradeId, year, month, organizer, name, jmClass, kgkClass, grade) {
     this.id = id;
     this.gradeId = gradeId;
-    this.organizer = organizer;
-    this.name = name;
-    this.jmClass = jmClass;
-    this.kgkClass = kgkClass;
-    this.grade = grade;
     this.year = year;
     this.month = month;
     this.jmEnable = true;
     this.kgkEnable = true;
-}
+    if (id === null || gradeId === null) {
+        this.organizer = organizer;
+        this.name = name;
+        this.jmClass = jmClass;
+        this.kgkClass = kgkClass;
+        this.grade = grade;
+        return;
+    }
+    const qual = qualificationList[id];
+    this.organizer = qual.organizer.name;
+    this.name = qual.name;
+    this.jmClass = qual.jmClass;
+    this.kgkClass = qual.kgkClass;
+    this.grade = JSON.parse(JSON.stringify(qual.grades[gradeId]));
+};
 
 
-var userdata = new StorageManager("ikuhime", localStorage);
+const userdata = new StorageManager("ikuhime", localStorage);
 userdata.load();
-if (userdata.names.length == 0 && location.pathname.match(/\/ikuhime\/welcome/) === null) {
+if (userdata.isEmpty() && location.pathname.search(/\/ikuhime\/welcome/) === -1) {
     location.href = "/ikuhime/welcome";
 }

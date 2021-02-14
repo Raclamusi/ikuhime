@@ -1,19 +1,19 @@
 ﻿
-function changeName() {
-    var name = window.prompt("新しい名前を入力してください", userdata.name);
-    if (name !== "") {
-        userdata.name = name;
+const changeName = function () {
+    const newName = prompt("新しい名前を入力してください", userdata.name);
+    if (newName !== "") {
+        userdata.name = newName;
         userdata.save("name");
-        window.alert("名前を変更しました");
+        alert("名前を変更しました");
     }
-}
+};
 
-function removeData() {
-    if (window.confirm("すべてのデータが削除されます！\nよろしいですか？")) {
-        if (window.confirm("本当によろしいですか？")) {
+const removeData = function () {
+    if (confirm("すべてのデータが削除されます！\nよろしいですか？")) {
+        if (confirm("本当によろしいですか？")) {
             userdata.clear();
-            window.alert("削除が完了しました");
+            alert("削除が完了しました");
             location.href = "/ikuhime/";
         }
     }
-}
+};

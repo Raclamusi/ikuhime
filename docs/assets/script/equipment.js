@@ -1,112 +1,90 @@
 ﻿
-window.addEventListener("load", function () {
-    var alist = document.getElementById("avatar-list");
-    for (var i = 0; i < avatarList.length; i++) {
-        var v = avatarList[i];
-        var li = document.createElement("li");
-        var img = document.createElement("img");
-        var div = document.createElement("div");
-        var h3 = document.createElement("h3");
-        var p = document.createElement("p");
-        img.src = v.url;
-        h3.textContent = v.name;
-        p.innerHTML = v.content;
+(function () {
+    const avatarOptions = document.getElementById("avatar-list");
+    const makeAvatarOnClick = function (index) {
+        return function () {
+            avatarOptions.childNodes[index].classList.add("equip-selected");
+            avatarOptions.childNodes[userdata.avatar].classList.remove("equip-selected");
+            document.getElementById("avatar").src = avatarList[index].url;
+            userdata.avatar = index;
+            userdata.save("avatar");
+        };
+    };
+    avatarList.forEach(function (avatar, index) {
+        const li = document.createElement("li");
+        const img = new Image();
+        const div = document.createElement("div");
+        const h3 = document.createElement("h3");
+        const p = document.createElement("p");
+        img.src = avatar.url;
+        h3.textContent = avatar.name;
+        p.innerHTML = avatar.content;
         div.appendChild(h3);
         div.appendChild(p);
         li.appendChild(img);
         li.appendChild(div);
-        if (i == userdata.avatar) {
-            li.classList.add("equip-selected");
-		}
-        (function () {
-            var ai = i;
-            li.addEventListener("click", function () {
-                var items = alist.childNodes;
-                for (var j = 0; j < items.length; j++) {
-                    if (j == ai) {
-                        items[j].classList.add("equip-selected");
-                    }
-                    else {
-                        items[j].classList.remove("equip-selected");
-                    }
-                }
-                userdata.avatar = ai;
-                document.getElementById("avatar").src = avatarList[userdata.avatar].url;
-                userdata.save("avatar");
-            });
-        })();
-        alist.appendChild(li);
-    }
-
-    var elist = document.getElementById("equip-list");
-    for (var i = 0; i < equipList.length; i++) {
-        if (!userdata.enableEquip[i]) {
-            continue;
-		}
-        var v = equipList[i];
-        var li = document.createElement("li");
-        var img = document.createElement("img");
-        var div = document.createElement("div");
-        var h3 = document.createElement("h3");
-        var p = document.createElement("p");
-        img.src = v.url;
-        h3.textContent = v.name;
-        p.innerHTML = v.content;
-        div.appendChild(h3);
-        div.appendChild(p);
-        li.appendChild(img);
-        li.appendChild(div);
-        if (userdata.equips.indexOf(i) != -1) {
+        if (index === userdata.avatar) {
             li.classList.add("equip-selected");
         }
-        (function () {
-            var ei = i;
-            var item = li;
-            li.addEventListener("click", function () {
-                var items = alist.childNodes;
-                var images = document.getElementById("images");
-                var imgs = images.childNodes;
-                if (userdata.equips.indexOf(ei) != -1) {
-                    var e = userdata.equips;
-                    for (var j = 0; j < e.length; j++) {
-                        if (e[j] == ei) {
-                            e.splice(j, 1);
-                            break;
-						}
-					}
-                    item.classList.remove("equip-selected");
-                    for (var j = 0; j < imgs.length; j++) {
-                        var v = imgs[j];
-                        if (v.id == ei) {
-                            v.remove();
-                            break;
-						}
-					}
-                }
-                else {
-                    if (userdata.equips.length >= userdata.level) {
-                        window.alert("装備可能上限数に達しました");
-                        return;
-					}
-                    userdata.equips.push(ei);
-                    item.classList.add("equip-selected");
-                    var img = document.createElement("img");
-                    img.src = equipList[ei].url;
-                    img.id = ei;
-                    images.appendChild(img);
-                }
+        li.addEventListener("click", makeAvatarOnClick(index));
+        avatarOptions.appendChild(li);
+    });
+
+    const equipOptions = document.getElementById("equip-list");
+    const preview = document.getElementById("images");
+    const makeEquipOnClick = function (index, item) {
+        return function () {
+            const i = userdata.equips.indexOf(index);
+            if (i >= 0) {
+                userdata.equips.splice(i, 1);
+                item.classList.remove("equip-selected");
+                Array.from(preview.childNodes).find(function (image) {
+                    return image.id === index + "";
+                }).remove();
                 userdata.save("equips");
-            });
-        })();
-        elist.appendChild(li);
-    }
+                return;
+            }
+            if (userdata.equips.length >= userdata.level) {
+                alert("装備可能上限数に達しました");
+                return;
+            }
+            userdata.equips.push(index);
+            item.classList.add("equip-selected");
+            const img = new Image();
+            img.src = equipList[index].url;
+            img.id = index;
+            preview.appendChild(img);
+            userdata.save("equips");
+        };
+    };
+    equipList.forEach(function (equip, index) {
+        if (!userdata.enableEquip[index]) {
+            return;
+        }
+        const li = document.createElement("li");
+        const img = new Image();
+        const div = document.createElement("div");
+        const h3 = document.createElement("h3");
+        const p = document.createElement("p");
+        img.src = equip.url;
+        h3.textContent = equip.name;
+        p.innerHTML = equip.content;
+        div.appendChild(h3);
+        div.appendChild(p);
+        li.appendChild(img);
+        li.appendChild(div);
+        if (userdata.equips.includes(index)) {
+            li.classList.add("equip-selected");
+        }
+        li.addEventListener("click", makeEquipOnClick(index, li));
+        equipOptions.appendChild(li);
+    });
 
     document.getElementById("avatar").src = avatarList[userdata.avatar].url;
-    var images = document.getElementById("images");
-    for (var i = 0; i < userdata.equips.length; i++) {
-        var img = document.createElement("img");
-        img.src = equipList[userdata.equips[i]].url;
-        img.id = userdata.equips[i];
-        images.appendChild(img);
-    }
-});
+    userdata.equips.forEach(function (equipId) {
+        const img = new Image();
+        img.src = equipList[equipId].url;
+        img.id = equipId;
+        preview.appendChild(img);
+    });
+})();

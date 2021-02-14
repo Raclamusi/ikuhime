@@ -1,25 +1,25 @@
 ﻿
-function Organizer(name) {
+const Organizer = function (name) {
     this.name = name;
-}
+};
 
-function Qualification(name, organizer, jmClass, kgkClass, grades) {
+const Qualification = function (name, organizer, jmClass, kgkClass, grades) {
     this.name = name;
     this.organizer = organizerList[organizer];
     this.jmClass = jmClass;
     this.kgkClass = kgkClass;
     this.grades = grades;
-}
+};
 
-function Grade(name, jmRank, kgkRank, kgkPoint) {
+const Grade = function (name, jmRank, kgkRank, kgkPoint) {
     this.name = name;
     this.jmRank = jmRank;
     this.jmPoint = jmRankList[jmRank];
     this.kgkRank = kgkRank;
     this.kgkPoint = kgkPoint;
-}
+};
 
-var organizerList = {
+const organizerList = {
     zenkokyo: new Organizer("全国工業高等学校長協会"),
     eiken: new Organizer("日本英語検定協会"),
     kogyoEigo: new Organizer("日本工業英語協会"),
@@ -32,11 +32,11 @@ var organizerList = {
 
 };
 
-var jmRankList = {
+const jmRankList = {
     S: 30, A: 20, B: 12, C: 7, D: 4, E: 2, F: 1, "": 0,
 };
 
-var qualificationList = {
+const qualificationList = {
     keisanGijutsu: new Qualification("計算技術検定", "zenkokyo", 101, 601, [
         new Grade("１級", "A", "a", 10),
         new Grade("２級", "C", "b", 8),
@@ -148,67 +148,61 @@ var qualificationList = {
 
 
 
-function Avatar(name, content, url) {
+const Avatar = function (name, content, url) {
     this.name = name;
     this.content = content;
     this.url = "/ikuhime/assets/image/" + url + ".png";
-}
+};
 
-function Achievement(title, equip, condition) {
+const Achievement = function (title, equip, condition) {
     this.title = title;
     this.equip = equip;
     this.condition = condition;
-}
+};
 
-function LevelCond(level) {
+const LevelCond = function (level) {
     this.level = level;
-}
+};
 
 LevelCond.prototype.check = function () {
     return userdata.level >= this.level;
 };
 
-function QualifCond(qualif, grade) {
+const QualifCond = function (qualif, grade) {
     this.qualif = qualif;
     this.grade = grade;
-}
+};
 
 QualifCond.prototype.check = function () {
-    for (var i = 0; i < userdata.quals.length; i++) {
-        var v = userdata.quals[i];
-        if (v.id == this.qualif && v.gradeId <= this.grade) {
-            return true;
-		}
-    }
-    return false;
+    return userdata.quals.some(function (qual) {
+        return qual.id === this.qualif && qual.gradeId <= this.grade;
+    }, this);
 };
 
-function JmPointCond(point) {
+const JmPointCond = function (point) {
     this.point = point;
-}
+};
 
 JmPointCond.prototype.check = function () {
-    var p = 0;
-    for (var i = 0; i < userdata.quals.length; i++) {
-        p += userdata.quals[i].grade.jmPoint;
-    }
-    return p >= this.point;
+    const pt = userdata.quals.reduce(function (point, qual) {
+        return point + qual.grade.jmPoint;
+    }, 0);
+    return pt >= this.point;
 };
 
-function KgkPointCond(point) {
+const KgkPointCond = function (point) {
     this.point = point;
-}
+};
 
 KgkPointCond.prototype.check = function () {
-    var p = 0;
-    for (var i = 0; i < userdata.quals.length; i++) {
-        p += userdata.quals[i].grade.kgkPoint;
-    }
-    return p >= this.point;
+    const pt = userdata.quals.reduce(function (point, qual) {
+        return point + qual.grade.kgkPoint;
+    }, 0);
+    return pt >= this.point;
 };
 
 
-var avatarList = [
+const avatarList = [
     new Avatar("制服 男", "", "seifuku"),
     new Avatar("制服 女", "", "seifuku-g"),
     new Avatar("バドミントン", "", "badominntonn"),
@@ -249,7 +243,7 @@ var avatarList = [
     new Avatar("野球2", "みんなで力を合わせて全国制覇だ！！", "yakyuu2"),
 ];
 
-var equipList = [
+const equipList = [
     new Avatar("アヒル", "ただのアヒル（余命4か月）", "ahirucyann"),
     new Avatar("無線機", "なんでも聞こえる", "amacyuamusenn"),
     new Avatar("スライム", "スライムが調子に乗ってこちらを見ている。", "aosuraimu"),
@@ -317,7 +311,7 @@ var equipList = [
     new Avatar("雑草", "今日の晩飯！", "zassou"),
 ];
 
-var achievementList = [
+const achievementList = [
     new Achievement("アマチュア無線技士", 1, new QualifCond("musen", 9)),
     new Achievement("電気工事士", 3, new QualifCond("denkiKoji", 9)),
     new Achievement("ボイラー技士", 7, new QualifCond("boira", 9)),
