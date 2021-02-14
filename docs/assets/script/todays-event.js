@@ -3,9 +3,7 @@ var now = new Date();
 var nowTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
 
 window.addEventListener("load", function () {
-    if (userdata.bonusPreTime < nowTime) {
-        document.getElementById("bonus").classList.remove("hidden");
-    }
+    document.getElementById("bonus").remove();
 });
 
 function nothingSpecial() {
