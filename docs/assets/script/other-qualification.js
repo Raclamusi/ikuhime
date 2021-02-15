@@ -41,12 +41,12 @@ const registration = function () {
         qual.kgkEnable = false;
     });
     if (sameJmQuals.some(function (qual) {
-        return qual.grade.jmPoint > jmPoint;
+        return qual.grade.jmPoint >= jmPoint;
     })) {
         obtainedQual.jmEnable = false;
     }
     if (sameKgkQuals.some(function (qual) {
-        return qual.grade.kgkPoint > kgkPoint;
+        return qual.grade.kgkPoint >= kgkPoint;
     })) {
         obtainedQual.kgkEnable = false;
     }
