@@ -1,13 +1,19 @@
 ﻿
 const getEraName = function (year, month) {
-    const era = [
-        { name: "昭和", year: year - 1925, condition: year < 1989 },
-        { name: "平成", year: year - 1988, condition: year < 2019 || (year === 2019 && month < 5) },
-        { name: "令和", year: year - 2018, condition: true },
-    ].find(function (era) {
-        return era.condition;
-    });
-    return era.name + (era.year === 1 ? "元" : era.year) + "年" + month + "月";
+    const eras = [
+        { name: "昭和", year: 1926, month: 12 },
+        { name: "平成", year: 1989, month: 1 },
+        { name: "令和", year: 2019, month: 5 },
+        { name: "terminator", year: Infinity, month: Infinity }
+    ];
+    const era = eras[-1 + eras.findIndex(function (e) {
+        return year < e.year || (year === e.year && month < e.month);
+    })];
+    if (era === undefined) {
+        return eras[0].name + "以前には対応していません（西暦" + year + "年" + month + "月）";
+    }
+    const y = year - era.year + 1;
+    return era.name + (y == 1 ? "元" : y) + "年" + month + "月";
 };
 
 (function () {
@@ -28,8 +34,8 @@ const getEraName = function (year, month) {
         month.textContent = [0, null].includes(qual.month) ? "未設定" : getEraName(qual.year, qual.month);
         org.textContent = qual.organizer;
         name.textContent = qual.name + " " + qual.grade.name;
-        jm.textContent = qual.jmClass + qual.grade.jmRank;
-        kgk.textContent = qual.kgkClass + qual.grade.kgkRank;
+        jm.textContent = qual.jmClass === null ? "未設定" : qual.jmClass + qual.grade.jmRank;
+        kgk.textContent = qual.kgkClass === null ? "未設定" : qual.kgkClass + qual.grade.kgkRank;
         jmp.textContent = qual.grade.jmPoint + "";
         kgkp.textContent = qual.grade.kgkPoint + "";
         if (!qual.jmEnable) {
