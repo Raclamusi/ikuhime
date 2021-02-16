@@ -56,7 +56,7 @@ const registration = function () {
     });
     const saveComment = function () {
         if (comment !== "") {
-            userdata.eventRecords.push(new EventRecord(obtainedQual.name + " " + obtainedQual.grade.name, comment));
+            userdata.eventRecords.shift(new EventRecord(obtainedQual.name + " " + obtainedQual.grade.name, comment));
             userdata.save("eventRecords");
         }
     };

@@ -19,7 +19,7 @@ const registration = function () {
         alert("内容を入力してください");
         return;
     }
-    userdata.eventRecords.push(new EventRecord(title, content));
+    userdata.eventRecords.shift(new EventRecord(title, content));
     userdata.exp += 100 + 3 * Math.min(content.length, 300);
     userdata.save("eventRecords", "exp");
     location.href = "/ikuhime/home";

@@ -2,7 +2,8 @@
 const EventRecord = function (title, content) {
     this.title = title;
     this.content = content;
-    this.date = new Date();
+    const now = new Date();
+    this.date = now.getFullYear() + "年" + now.getMonth() + "月" + now.getDate() + "日";
 };
 
 

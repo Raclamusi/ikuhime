@@ -57,7 +57,7 @@ const registration = function () {
     userdata.exp = 500 + Math.max(jmPoint * 100, kgkPoint * 200);
     userdata.save("quals", "exp");
     if (comment !== "") {
-        userdata.eventRecords.push(new EventRecord(qualName + " " + gradeName, comment));
+        userdata.eventRecords.shift(new EventRecord(qualName + " " + gradeName, comment));
         userdata.save("eventRecords");
     }
     location.href = "/ikuhime/home";
