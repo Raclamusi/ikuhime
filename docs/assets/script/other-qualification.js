@@ -14,8 +14,8 @@ const registration = function () {
     const kr = document.addition.kgkRank.value;
     const kp = document.addition.kgkPoint.value;
     const comment = document.addition.comment.value;
-    const year = parseInt(yearAndMonth.substr(0, 4));
-    const month = parseInt(yearAndMonth.substr(5, 2));
+    const year = yearAndMonth === "" ? 0 : parseInt(yearAndMonth.substr(0, 4));
+    const month = yearAndMonth === "" ? 0 : parseInt(yearAndMonth.substr(5, 2));
     const jmClass = jc === NaN ? "" : jc;
     const jmRank = jr === "none" ? "" : jr;
     const kgkClass = kc === NaN ? "" : kc;
@@ -57,7 +57,7 @@ const registration = function () {
     userdata.exp = 500 + Math.max(jmPoint * 100, kgkPoint * 200);
     userdata.save("quals", "exp");
     if (comment !== "") {
-        userdata.eventRecords.shift(new EventRecord(qualName + " " + gradeName, comment));
+        userdata.eventRecords.unshift(new EventRecord(qualName + " " + gradeName, comment));
         userdata.save("eventRecords");
     }
     location.href = "/ikuhime/home";
