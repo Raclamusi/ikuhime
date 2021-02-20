@@ -114,14 +114,14 @@ const registration = function () {
                     }
                     break;
             }
-            if (obtainedQual.grade.name.search(/乙種?類/) === 0) {
+            if (obtainedQual.grade.name.startsWith("乙種")) {
                 if (sameIdQuals.some(function (qual) {
                     return qual.grade.name === "甲種";
                 })) {
                     obtainedQual.jmEnable = false;
                 }
                 const otsuCount = sameIdQuals.filter(function (qual) {
-                    return qual.grade.name.search(/乙種?類/) === 0;
+                    return qual.grade.name.startsWith("乙種");
                 }).length;
                 if (otsuCount >= 1) {
                     obtainedQual.grade.kgkRank = "c";
