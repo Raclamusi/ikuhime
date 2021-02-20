@@ -10,7 +10,7 @@ const getEraName = function (year, month) {
         return year < e.year || (year === e.year && month < e.month);
     })];
     if (era === undefined) {
-        return eras[0].name + "以前には対応していません（西暦" + year + "年" + month + "月）";
+        return eras[0].name + "より前には対応していません（西暦" + year + "年" + month + "月）";
     }
     const y = year - era.year + 1;
     return era.name + (y == 1 ? "元" : y) + "年" + month + "月";
