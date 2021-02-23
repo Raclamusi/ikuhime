@@ -38,20 +38,20 @@ if (!("orgList" in userdata) || !("qualList" in userdata)) {
         if (o === undefined) {
             userdata.orgList[index] = new Organizer(qual.organizer);
         }
-        const orgId = o === undefined ? index : o.id;
+        const orgId = o === undefined ? index + "" : o.id;
 
         const q = Object.entries(userdata.qualList).map(function (e) {
             return { id: e[0], qual: e[1] };
         }).find(function (e) {
             return e.qual.name === qual.name &&
-                e.qual.organizer.name === qual.organizer &&
+                userdata.orgList[e.qual.orgId].name === qual.organizer &&
                 e.qual.jmClass === qual.jmClass &&
                 e.qual.kgkClass === qual.kgkClass;
         });
         if (q === undefined) {
             userdata.qualList[index] = new Qualification(qual.name, orgId, qual.jmClass, qual.kgkClass, []);
         }
-        qual.id = q === undefined ? index : q.id;
+        qual.id = q === undefined ? index + "" : q.id;
 
         const grades = userdata.qualList[qual.id].grades;
         const gradeId = grades.findIndex(function (grade) {

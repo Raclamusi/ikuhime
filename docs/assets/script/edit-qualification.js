@@ -99,8 +99,12 @@
         edit.textContent = "編集";
         edit.addEventListener("click", function () {
             if (edit.textContent === "確定") {
-                edit.textContent = "編集";
                 const nameInput = name.firstChild;
+                if (nameInput.value === "") {
+                    alert("主催の名前を入力してください");
+                    return;
+                }
+                edit.textContent = "編集";
                 org.name = nameInput.value;
                 nameInput.remove();
                 setTextContent();
@@ -195,11 +199,15 @@
         edit.textContent = "編集";
         edit.addEventListener("click", function () {
             if (edit.textContent === "確定") {
-                edit.textContent = "編集";
                 const nameInput = name.firstChild;
                 const orgSelect = organizer.firstChild;
                 const jmInput = jmClass.firstChild;
                 const kgkInput = kgkClass.firstChild;
+                if (nameInput.value === "") {
+                    alert("資格･検定の名前を入力してください");
+                    return;
+                }
+                edit.textContent = "編集";
                 const jm = parseInt(jmInput.value);
                 const kgk = parseInt(kgkInput.value);
                 qual.name = nameInput.value;
