@@ -172,7 +172,7 @@
         userdata.orgList[id] = new Organizer(orgNameInput.value);
         orgNameInput.value = "";
         userdata.save("orgList");
-        addOrg(id, userdata.orgList[id]);
+        addOrg(id + "", userdata.orgList[id]);
     });
  
 
@@ -215,7 +215,7 @@
                 qual.jmClass = isNaN(jm) ? "" : jm;
                 qual.kgkClass = isNaN(kgk) ? "" : kgk;
                 nameInput.remove();
-                orgSelect.remove();
+                organizer.removeChild(orgSelect);
                 jmInput.remove();
                 kgkInput.remove();
                 setTextContent();
@@ -317,7 +317,7 @@
         qualJmInput.value = "";
         qualKgkInput.value = "";
         userdata.save("qualList");
-        addQual(id, userdata.qualList[id]);
+        addQual(id + "", userdata.qualList[id]);
     });
 
 
@@ -362,10 +362,10 @@
                 grade.jmPoint = jmRankList[jmRankSelect.value];
                 grade.kgkPoint = parseInt(kgkPointSelect.value);
                 //nameInput.remove();
-                jmRankSelect.remove();
-                kgkRankSelect.remove();
+                jmRank.removeChild(jmRankSelect);
+                kgkRank.removeChild(kgkRankSelect);
                 jmPointSpan.remove();
-                kgkPointSelect.remove();
+                kgkPoint.removeChild(kgkPointSelect);
                 setTextContent();
                 userdata.save("qualList");
                 return;
@@ -419,19 +419,10 @@
 
     gradeAddButton.disabled = true;
 
-    const searchQual = function () {
-        Array.from(gradeQualSelect.childNodes).filter(function (op) {
-            return op.nodeName === "OPTION";
-        }).forEach(function (op) {
-            const qual = userdata.qualList[op.value];
-            const searchedName = gradeSearchNameInput.value;
-            const searchedOrgId = gradeSearchOrgSelect.value;
-            op.style.display = qual.name.search(new RegExp(searchedName, "i")) !== -1 &&
-                (searchedOrgId === "none" || qual.orgId === searchedOrgId) ? "" : "none";
-        });
-    };
-
     const updateGrades = function () {
+        if (gradeQualSelect.value === "") {
+            return;
+        }
         const qual = userdata.qualList[gradeQualSelect.value];
         Array.from(gradeTable.childNodes).forEach(function (row) {
             row.remove();
@@ -439,6 +430,36 @@
         qual.grades.forEach(function (grade, index) {
             addGrade(index, grade);
         });
+    };
+
+    const searchQual = function () {
+        const searchedName = gradeSearchNameInput.value;
+        const searchedOrgId = gradeSearchOrgSelect.value;
+        const searchedRegExp = new RegExp(searchedName, "i");
+        const check = function (qual) {
+            return qual.name.search(searchedRegExp) !== -1 &&
+                (searchedOrgId === "none" || qual.orgId === searchedOrgId);
+        };
+        Array.from(gradeQualSelect.childNodes).filter(function (node) {
+            return node.nodeName === "OPTION";
+        }).filter(function (option) {
+            return !check(userdata.qualList[option.value]);
+        }).forEach(function (option) {
+            const wrappingSpan = document.createElement("span");
+            gradeQualSelect.replaceChild(wrappingSpan, option);
+            wrappingSpan.appendChild(option);
+        });
+        Array.from(gradeQualSelect.childNodes).filter(function (node) {
+            return node.nodeName === "SPAN";
+        }).filter(function (span) {
+            return check(userdata.qualList[span.firstChild.value]);
+        }).forEach(function (span) {
+            const option = span.firstChild;
+            option.remove();
+            gradeQualSelect.replaceChild(option, span);
+        });
+
+        updateGrades();
     };
 
     gradeSearchNameInput.addEventListener("change", searchQual);
