@@ -24,7 +24,7 @@ if (userdata.isEmpty() && location.pathname.search(/\/ikuhime\/welcome/) === -1)
 }
 
 // for old savedata
-if (!("orgList" in userdata) || !("qualList" in userdata)) {
+if (!(("orgList" in userdata) && ("qualList" in userdata)) && location.pathname.search(/\/ikuhime\/welcome/) === -1) {
     userdata.set("orgList", organizerList);
     userdata.set("qualList", qualificationList);
     userdata.quals.filter(function (qual) {

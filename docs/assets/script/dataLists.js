@@ -185,7 +185,7 @@ const JmPointCond = function (point) {
 
 JmPointCond.prototype.check = function () {
     const pt = userdata.quals.reduce(function (point, qual) {
-        return point + qual.grade.jmPoint;
+        return point + userdata.qualList[qual.id].grades[qual.gradeId].jmPoint;
     }, 0);
     return pt >= this.point;
 };
@@ -196,7 +196,7 @@ const KgkPointCond = function (point) {
 
 KgkPointCond.prototype.check = function () {
     const pt = userdata.quals.reduce(function (point, qual) {
-        return point + qual.grade.kgkPoint;
+        return point + userdata.qualList[qual.id].grades[qual.gradeId].kgkPoint;
     }, 0);
     return pt >= this.point;
 };
