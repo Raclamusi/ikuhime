@@ -1,0 +1,24 @@
+
+h1 {
+    margin: 0 3%;
+}
+
+section {
+    margin: 0 6% 50px;
+}
+
+.content {
+    overflow-x: auto;
+}
+
+.grade-select {
+    margin: 0 3%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ccffdd;
+}
+
+.grade-select-search {
+    padding: 10px;
+    border: 2px dotted #5555ff;
+}

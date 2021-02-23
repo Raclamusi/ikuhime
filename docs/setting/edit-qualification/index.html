@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>資格･検定情報編集 - 育成！姫工生アバター</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="google-site-verification" content="ogUvn2HCG3CDCzJtdgOUA2EdJ9e4s6U1MtCrjbv2Mpw">
+    <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
+    <meta property="og:site_name" content="育成！姫工生アバター">
+    <meta property="og:title" content="資格･検定情報編集 - 育成！姫工生アバター">
+    <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/setting/edit-qualification">
+    <meta property="og:image" content="https://raclamusi.github.io/ikuhime/assets/image/icon.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="shortcut icon icon" type="image/png" href="/ikuhime/assets/image/icon.png">
+    <link rel="apple-touch-icon" type="image/png" href="/ikuhime/assets/image/icon.png">
+    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/common.css">
+    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/edit-qualification.css">
+    <script type="text/javascript" src="/ikuhime/assets/script/polyfill.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="/ikuhime/" class="header-icon"><img src="/ikuhime/assets/image/icon.png"></a>
+        <a href="javascript: openMenu();" class="header-menuicon"><span id="menu-text">メニュー</span></a>
+        <nav id="menu" class="header-menu">
+            <ul class="header-menulist">
+                <li><a href="/ikuhime/home">ホーム</a></li>
+                <li><a href="/ikuhime/growing">育成</a></li>
+                <li><a href="/ikuhime/equipment">装備</a></li>
+                <li><a href="/ikuhime/result">成果</a></li>
+                <li><a href="/ikuhime/setting">設定</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <a href="/ikuhime/home/setting" class="back">←戻る</a>
+        <h1>資格･検定情報編集</h1>
+        <section class="organizer">
+            <h2>主催情報</h2>
+            <div class="content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>名前</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="org-table"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input id="org-name" type="text"></td>
+                            <td><button id="org-add">追加</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+        <section class="qualification">
+            <h2>資格･検定情報</h2>
+            <div class="content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>名前</th>
+                            <th>主催</th>
+                            <th>JM区分番号</th>
+                            <th>顕彰種類NO</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="qual-table"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input id="qual-name" type="text"></td>
+                            <td>
+                                <select id="qual-org">
+                                    <option value="none" selected>-</option>
+                                </select>
+                            </td>
+                            <td><input id="qual-jm-class" type="number"></td>
+                            <td><input id="qual-kgk-class" type="number"></td>
+                            <td><button id="qual-add">追加</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+        <section class="grade">
+            <h2>級情報</h2>
+            <div class="grade-select">
+                <h3>検定選択</h3>
+                <div class="grade-select-search">
+                    <p><label>名前で検索&nbsp;<input id="grade-search-name" type="text"></label></p>
+                    <p><label>主催で検索&nbsp;<select id="grade-search-org"><option value="none" selected>指定なし</option></select></label></p>
+                </div>
+                <p><label>資格･検定&nbsp;<select id="grade-qual"></select></label></p>
+            </div>
+            <p>上にあるほど上位の級として扱われます。（「危険物取扱者」など、配点が特殊なものはその通りにならないことがあります。）</p>
+            <div class="content">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>級</th>
+                            <th>JM区分記号</th>
+                            <th>顕彰等級NO</th>
+                            <th>JM点数</th>
+                            <th>顕彰点数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="grade-table">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input id="grade-name" type="text"></td>
+                            <td>
+                                <select id="grade-jm-rank">
+                                    <option value="none" selected>-</option>
+                                    <option value="S">S</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="grade-kgk-rank">
+                                    <option value="none" selected>-</option>
+                                    <option value="a">a</option>
+                                    <option value="b">b</option>
+                                    <option value="c">c</option>
+                                    <option value="d">d</option>
+                                    <option value="e">e</option>
+                                    <option value="f">f</option>
+                                    <option value="g">g</option>
+                                    <option value="h">h</option>
+                                    <option value="i">i</option>
+                                    <option value="j">j</option>
+                                    <option value="k">k</option>
+                                    <option value="l">l</option>
+                                    <option value="m">m</option>
+                                    <option value="n">n</option>
+                                    <option value="o">o</option>
+                                    <option value="p">p</option>
+                                    <option value="q">q</option>
+                                    <option value="r">r</option>
+                                    <option value="s">s</option>
+                                    <option value="t">t</option>
+                                    <option value="u">u</option>
+                                    <option value="v">v</option>
+                                    <option value="w">w</option>
+                                    <option value="x">x</option>
+                                    <option value="y">y</option>
+                                    <option value="z">z</option>
+                                </select>
+                            </td>
+                            <td><span id="grade-jm-point">-</span></td>
+                            <td>
+                                <select id="grade-kgk-point">
+                                    <option value="0" selected>-</option>
+                                    <option value="15">15</option>
+                                    <option value="10">10</option>
+                                    <option value="8">8</option>
+                                    <option value="5">5</option>
+                                    <option value="3">3</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </td>
+                            <td><button id="grade-add">追加</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/dataLists.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/userdata.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/edit-qualification.js"></script>
+</body>
+</html>

@@ -14,6 +14,8 @@ const start = function () {
     userdata.set("avatar", 0);
     userdata.set("equips", []);
     userdata.set("enableEquip", new Array(equipList.length).fill(false));
+    userdata.set("orgList", organizerList);
+    userdata.set("qualList", qualificationList);
     userdata.save();
     location.href = "/ikuhime/home";
 };

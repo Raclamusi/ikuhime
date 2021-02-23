@@ -3,9 +3,9 @@ const Organizer = function (name) {
     this.name = name;
 };
 
-const Qualification = function (name, organizer, jmClass, kgkClass, grades) {
+const Qualification = function (name, orgId, jmClass, kgkClass, grades) {
     this.name = name;
-    this.organizer = organizerList[organizer];
+    this.orgId = orgId + "";
     this.jmClass = jmClass;
     this.kgkClass = kgkClass;
     this.grades = grades;

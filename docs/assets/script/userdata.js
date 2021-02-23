@@ -7,27 +7,13 @@ const EventRecord = function (title, content) {
 };
 
 
-const ObtainedQualification = function (id, gradeId, year, month, organizer, name, jmClass, kgkClass, grade) {
-    this.id = id;
+const ObtainedQualification = function (id, gradeId, year, month) {
+    this.id = id + "";
     this.gradeId = gradeId;
     this.year = year;
     this.month = month;
     this.jmEnable = true;
     this.kgkEnable = true;
-    if (id === null || gradeId === null) {
-        this.organizer = organizer;
-        this.name = name;
-        this.jmClass = jmClass;
-        this.kgkClass = kgkClass;
-        this.grade = grade;
-        return;
-    }
-    const qual = qualificationList[id];
-    this.organizer = qual.organizer.name;
-    this.name = qual.name;
-    this.jmClass = qual.jmClass;
-    this.kgkClass = qual.kgkClass;
-    this.grade = JSON.parse(JSON.stringify(qual.grades[gradeId]));
 };
 
 
@@ -35,4 +21,60 @@ const userdata = new StorageManager("ikuhime", localStorage);
 userdata.load();
 if (userdata.isEmpty() && location.pathname.search(/\/ikuhime\/welcome/) === -1) {
     location.href = "/ikuhime/welcome";
+}
+
+// for old savedata
+if (!("orgList" in userdata) || !("qualList" in userdata)) {
+    userdata.set("orgList", organizerList);
+    userdata.set("qualList", qualificationList);
+    userdata.quals.filter(function (qual) {
+        return qual.id === null || qual.gradeId === null;
+    }).forEach(function (qual, index) {
+        const o = Object.entries(userdata.orgList).map(function (e) {
+            return { id: e[0], org: e[1] };
+        }).find(function (e) {
+            return e.org.name === qual.organizer;
+        });
+        if (o === undefined) {
+            userdata.orgList[index] = new Organizer(qual.organizer);
+        }
+        const orgId = o === undefined ? index : o.id;
+
+        const q = Object.entries(userdata.qualList).map(function (e) {
+            return { id: e[0], qual: e[1] };
+        }).find(function (e) {
+            return e.qual.name === qual.name &&
+                e.qual.organizer.name === qual.organizer &&
+                e.qual.jmClass === qual.jmClass &&
+                e.qual.kgkClass === qual.kgkClass;
+        });
+        if (q === undefined) {
+            userdata.qualList[index] = new Qualification(qual.name, orgId, qual.jmClass, qual.kgkClass, []);
+        }
+        qual.id = q === undefined ? index : q.id;
+
+        const grades = userdata.qualList[qual.id].grades;
+        const gradeId = grades.findIndex(function (grade) {
+            return grade.name === qual.grade.name &&
+                grade.jmRank === qual.grade.jmRank &&
+                grade.jmPoint === qual.grade.jmPoint &&
+                grade.kgkRank === qual.grade.kgkRank &&
+                grade.kgkPoint === qual.grade.kgkPoint;
+        });
+        if (gradeId < 0) {
+            grades.push(qual.grade);
+        }
+        qual.gradeId = gradeId < 0 ? grades.length - 1 : gradeId;
+    });
+    Object.values(userdata.qualList).filter(function (qual) {
+        return qual.jmClass === null;
+    }).forEach(function (qual) {
+        qual.jmClass = "";
+    });
+    Object.values(userdata.qualList).filter(function (qual) {
+        return qual.kgkClass === null;
+    }).forEach(function (qual) {
+        qual.kgkClass = "";
+    });
+    userdata.save("quals", "orgList", "qualList");
 }
