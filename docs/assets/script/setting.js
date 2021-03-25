@@ -1,7 +1,7 @@
 ﻿
 const changeName = function () {
     const newName = prompt("新しい名前を入力してください", userdata.name);
-    if (newName !== "") {
+    if (![null, ""].includes(newName)) {
         userdata.name = newName;
         userdata.save("name");
         alert("名前を変更しました");
