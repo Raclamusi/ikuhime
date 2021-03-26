@@ -337,7 +337,7 @@
         const parentQual = userdata.qualList[parentQualId];
 
         const setTextContent = function () {
-            name.textContent = grade.name;
+            name.textContent = grade.name === "" ? "（級なし）" : grade.name;
             jmRank.textContent = grade.jmRank === "" ? "未設定" : grade.jmRank;
             kgkRank.textContent = grade.kgkRank === "" ? "未設定" : grade.kgkRank;
             jmPoint.textContent = grade.jmPoint;
@@ -374,9 +374,10 @@
                 const kgkRankSelect = kgkRank.firstChild;
                 const jmPointSpan = jmPoint.firstChild;
                 const kgkPointSelect = kgkPoint.firstChild;
+                const nameOrNothing = nameInput.value === "" ? "（級なし）" : nameInput.value;
                 const jmr = jmRankSelect.value === "none" ? "" : jmRankSelect.value;
                 const kgkr = kgkRankSelect.value === "none" ? "" : kgkRankSelect.value;
-                grade.name = nameInput.value;
+                grade.name = nameOrNothing;
                 grade.jmRank = jmr;
                 grade.kgkRank = kgkr;
                 grade.jmPoint = jmRankList[jmr];
@@ -455,10 +456,6 @@
     gradeAddButton.addEventListener("click", function () {
         if (gradeQualSelect.value === "") {
             alert("検定･資格を選択してください");
-            return;
-        }
-        if (gradeNameInput.value === "") {
-            alert("級の名前を入力してください");
             return;
         }
 
