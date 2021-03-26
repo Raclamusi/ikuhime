@@ -417,19 +417,22 @@
             kgkPoint.appendChild(kgkPointSelect);
         });
         del.textContent = "削除";
-        del.addEventListener("click", function () {
-            if (userdata.quals.some(function (qual) {
-                return qual.id === parentQualId && qual.gradeId === id;
-            })) {
-                alert("この級を取得しているので削除できません");
-                return;
-            }
-            if (confirm("級情報「" + parentQual.name + " " + grade.name + "」を削除します")) {
-                parentQual.grades.splice(index, 1);
-                userdata.save("qualList");
-                updateGrades();
-            }
-        });
+        del.disabled = parentQual.grades.length === 1;
+        if (!del.disabled) {
+            del.addEventListener("click", function () {
+                if (userdata.quals.some(function (qual) {
+                    return qual.id === parentQualId && qual.gradeId === id;
+                })) {
+                    alert("この級を取得しているので削除できません");
+                    return;
+                }
+                if (confirm("級情報「" + parentQual.name + " " + grade.name + "」を削除します")) {
+                    parentQual.grades.splice(index, 1);
+                    userdata.save("qualList");
+                    updateGrades();
+                }
+            });
+        }
 
         func.appendChild(up);
         func.appendChild(down);
