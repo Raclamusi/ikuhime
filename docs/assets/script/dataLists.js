@@ -11,12 +11,31 @@ const Qualification = function (name, orgId, jmClass, kgkClass, grades) {
     this.grades = grades;
 };
 
-const Grade = function (name, jmRank, kgkRank, kgkPoint) {
+const Grade = function (name, jmRank, kgkRank, kgkPoint, id) {
     this.name = name;
     this.jmRank = jmRank;
     this.jmPoint = jmRankList[jmRank];
     this.kgkRank = kgkRank;
     this.kgkPoint = kgkPoint;
+    this.id = id === undefined ? null : id;
+};
+
+const findGrade = function (qualId, gradeId) {
+    if (!(qualId in userdata.qualList)) {
+        return undefined;
+    }
+    return userdata.qualList[qualId].grades.find(function (grade) {
+        return grade.id === gradeId;
+    });
+};
+
+const findGradeIndex = function (qualId, gradeId) {
+    if (!(qualId in userdata.qualList)) {
+        return -1;
+    }
+    return userdata.qualList[qualId].grades.findIndex(function (grade) {
+        return grade.id === gradeId;
+    });
 };
 
 const organizerList = {
@@ -38,10 +57,10 @@ const jmRankList = {
 
 const qualificationList = {
     keisanGijutsu: new Qualification("計算技術検定", "zenkokyo", 101, 601, [
-        new Grade("１級", "A", "a", 10),
-        new Grade("２級", "C", "b", 8),
-        new Grade("３級", "E", "c", 5),
-        new Grade("４級", "F", "d", 3),
+        new Grade("１級", "A", "a", 10, "first"),
+        new Grade("２級", "C", "b", 8, "second"),
+        new Grade("３級", "E", "c", 5, "third"),
+        new Grade("４級", "F", "d", 3, "fourth"),
     ]),
     johoGijutsu: new Qualification("情報技術検定", "zenkokyo", 102, 304, [
         new Grade("１級（特別表彰）", "A", "a", 10),
@@ -127,14 +146,14 @@ const qualificationList = {
     ]),
 
     kikembutsu: new Qualification("危険物取扱者", "shoboShiken", 181, 501, [
-        new Grade("甲種", "A", "a", 15),
-        new Grade("乙種１類", "E", "b", 8),
-        new Grade("乙種２類", "E", "b", 8),
-        new Grade("乙種３類", "E", "b", 8),
-        new Grade("乙種４類", "D", "b", 8),
-        new Grade("乙種５類", "E", "b", 8),
-        new Grade("乙種６類", "E", "b", 8),
-        new Grade("丙種", "E", "c", 3),
+        new Grade("甲種", "A", "a", 15, "ko"),
+        new Grade("乙種１類", "E", "b", 8, "otsu1"),
+        new Grade("乙種２類", "E", "b", 8, "otsu2"),
+        new Grade("乙種３類", "E", "b", 8, "otsu3"),
+        new Grade("乙種４類", "D", "b", 8, "otsu4"),
+        new Grade("乙種５類", "E", "b", 8, "otsu5"),
+        new Grade("乙種６類", "E", "b", 8, "otsu6"),
+        new Grade("丙種", "E", "c", 3, "hei"),
     ]),
 
     musen: new Qualification("アマチュア無線技士", "musen", 226, 224, [
@@ -170,12 +189,14 @@ LevelCond.prototype.check = function () {
 
 const QualifCond = function (qualif, grade) {
     this.qualif = qualif;
-    this.grade = grade;
+    this.grade = grade === undefined ? null : grade;
 };
 
 QualifCond.prototype.check = function () {
     return userdata.quals.some(function (qual) {
-        return qual.id === this.qualif && qual.gradeId <= this.grade;
+        const gi = findGradeIndex(qual.id, qual.gradeId);
+        return qual.id === this.qualif &&
+            (this.grade === null || gi >= 0 && gi <= findGradeIndex(this.qualif, this.grade));
     }, this);
 };
 
@@ -185,7 +206,7 @@ const JmPointCond = function (point) {
 
 JmPointCond.prototype.check = function () {
     const pt = userdata.quals.reduce(function (point, qual) {
-        return point + userdata.qualList[qual.id].grades[qual.gradeId].jmPoint;
+        return point + findGrade(qual.id, qual.gradeId).jmPoint;
     }, 0);
     return pt >= this.point;
 };
@@ -196,7 +217,7 @@ const KgkPointCond = function (point) {
 
 KgkPointCond.prototype.check = function () {
     const pt = userdata.quals.reduce(function (point, qual) {
-        return point + userdata.qualList[qual.id].grades[qual.gradeId].kgkPoint;
+        return point + findGrade(qual.id, qual.gradeId).kgkPoint;
     }, 0);
     return pt >= this.point;
 };
@@ -312,12 +333,12 @@ const equipList = [
 ];
 
 const achievementList = [
-    new Achievement("アマチュア無線技士", 1, new QualifCond("musen", 9)),
-    new Achievement("電気工事士", 3, new QualifCond("denkiKoji", 9)),
-    new Achievement("ボイラー技士", 7, new QualifCond("boira", 9)),
-    new Achievement("計算技術ビギナー", 9, new QualifCond("keisanGijutsu", 2)),
-    new Achievement("機械製図マスター", 27, new QualifCond("kikaiSeizu", 9)),
-    new Achievement("パソコン使い", 41, new QualifCond("pcRiyou", 9)),
+    new Achievement("アマチュア無線技士", 1, new QualifCond("musen")),
+    new Achievement("電気工事士", 3, new QualifCond("denkiKoji")),
+    new Achievement("ボイラー技士", 7, new QualifCond("boira")),
+    new Achievement("計算技術ビギナー", 9, new QualifCond("keisanGijutsu", "third")),
+    new Achievement("機械製図マスター", 27, new QualifCond("kikaiSeizu")),
+    new Achievement("パソコン使い", 41, new QualifCond("pcRiyou")),
     new Achievement("ジュニアマイスターブロンズ", 10, new JmPointCond(20)),
     new Achievement("ジュニアマイスターブロンズ", 11, new JmPointCond(20)),
     new Achievement("ジュニアマイスターシルバー", 14, new JmPointCond(30)),

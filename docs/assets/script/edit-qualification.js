@@ -321,7 +321,7 @@
     });
 
 
-    const addGrade = function (id, grade) {
+    const addGrade = function (id, grade, index, parentQualId) {
         const row = document.createElement("tr");
         const name = document.createElement("td");
         const jmRank = document.createElement("td");
@@ -333,6 +333,8 @@
         const down = document.createElement("button");
         const edit = document.createElement("button");
         const del = document.createElement("button");
+        
+        const parentQual = userdata.qualList[parentQualId];
 
         const setTextContent = function () {
             name.textContent = grade.name;
@@ -341,27 +343,45 @@
             jmPoint.textContent = grade.jmPoint;
             kgkPoint.textContent = grade.kgkPoint;
         };
+        const swapGrade = function (off) {
+            parentQual.grades.splice(index, 1);
+            parentQual.grades.splice(index + off, 0, grade);
+            userdata.save("qualList");
+            updateGrades();
+        };
 
         setTextContent();
         up.textContent = "↑";
-        up.disabled = true;
+        up.disabled = index === 0;
+        if (!up.disabled) {
+            up.addEventListener("click", function () {
+                swapGrade(-1);
+            });
+        }
         down.textContent = "↓";
-        down.disabled = true;
+        down.disabled = index === parentQual.grades.length - 1;
+        if (!down.disabled) {
+            down.addEventListener("click", function () {
+                swapGrade(1);
+            });
+        }
         edit.textContent = "編集";
         edit.addEventListener("click", function () {
             if (edit.textContent === "確定") {
                 edit.textContent = "編集";
-                //const nameInput = name.firstChild;
+                const nameInput = name.firstChild;
                 const jmRankSelect = jmRank.firstChild;
                 const kgkRankSelect = kgkRank.firstChild;
                 const jmPointSpan = jmPoint.firstChild;
                 const kgkPointSelect = kgkPoint.firstChild;
-                //grade.name = nameInput.value;
-                grade.jmRank = jmRankSelect.value;
-                grade.kgkRank = kgkRankSelect.value;
-                grade.jmPoint = jmRankList[jmRankSelect.value];
+                const jmr = jmRankSelect.value === "none" ? "" : jmRankSelect.value;
+                const kgkr = kgkRankSelect.value === "none" ? "" : kgkRankSelect.value;
+                grade.name = nameInput.value;
+                grade.jmRank = jmr;
+                grade.kgkRank = kgkr;
+                grade.jmPoint = jmRankList[jmr];
                 grade.kgkPoint = parseInt(kgkPointSelect.value);
-                //nameInput.remove();
+                nameInput.remove();
                 jmRank.removeChild(jmRankSelect);
                 kgkRank.removeChild(kgkRankSelect);
                 jmPointSpan.remove();
@@ -371,7 +391,7 @@
                 return;
             }
             edit.textContent = "確定";
-            //const nameInput = gradeNameInput.cloneNode(true);
+            const nameInput = gradeNameInput.cloneNode(true);
             const jmRankSelect = gradeJmRankSelect.cloneNode(true);
             const kgkRankSelect = gradeKgkRankSelect.cloneNode(true);
             const jmPointSpan = gradeJmPointSpan.cloneNode(true);
@@ -380,24 +400,36 @@
                 const rank = jmRankSelect.value;
                 jmPointSpan.textContent = rank === "none" ? "-" : jmRankList[rank];
             });
-            //nameInput.value = grade.name;
+            nameInput.value = grade.name;
             jmRankSelect.value = grade.jmRank;
             kgkRankSelect.value = grade.kgkRank;
             jmPointSpan.textContent = grade.jmPoint;
             kgkPointSelect.value = grade.kgkPoint;
-            //name.textContent = "";
+            name.textContent = "";
             jmRank.textContent = "";
             kgkRank.textContent = "";
             jmPoint.textContent = "";
             kgkPoint.textContent = "";
-            //name.appendChild(nameInput);
+            name.appendChild(nameInput);
             jmRank.appendChild(jmRankSelect);
             kgkRank.appendChild(kgkRankSelect);
             jmPoint.appendChild(jmPointSpan);
             kgkPoint.appendChild(kgkPointSelect);
         });
         del.textContent = "削除";
-        del.disabled = true;
+        del.addEventListener("click", function () {
+            if (userdata.quals.some(function (qual) {
+                return qual.id === parentQualId && qual.gradeId === id;
+            })) {
+                alert("この級を取得しているので削除できません");
+                return;
+            }
+            if (confirm("級情報「" + parentQual.name + " " + grade.name + "」を削除します")) {
+                parentQual.grades.splice(index, 1);
+                userdata.save("qualList");
+                updateGrades();
+            }
+        });
 
         func.appendChild(up);
         func.appendChild(down);
@@ -417,7 +449,51 @@
         gradeJmPointSpan.textContent = rank === "none" ? "-" : jmRankList[rank];
     });
 
-    gradeAddButton.disabled = true;
+    gradeAddButton.addEventListener("click", function () {
+        if (gradeQualSelect.value === "") {
+            alert("検定･資格を選択してください");
+            return;
+        }
+        if (gradeNameInput.value === "") {
+            alert("級の名前を入力してください");
+            return;
+        }
+
+        const qual = userdata.qualList[gradeQualSelect.value];
+        const grades = qual.grades;
+        const ids = grades.map(function (grade) {
+            return parseInt(grade.id);
+        }).filter(function (id) {
+            return !isNaN(id);
+        }).sort(function (id1, id2) {
+            return id1 - id2;
+        });
+        ids.push(-1);
+        const id = ids.findIndex(function (id, index) {
+            return id !== index;
+        });
+        const jmRank = gradeJmRankSelect.value === "none" ? "" : gradeJmRankSelect.value;
+        const kgkRank = gradeKgkRankSelect.value === "none" ? "" : gradeKgkRankSelect.value;
+        const jmPoint = jmRankList[jmRank];
+        const kgkPoint = parseInt(gradeKgkPointSelect.value);
+        const index = grades.findIndex(function (grade) {
+            return grade.jmPoint < jmPoint || (grade.jmPoint === jmPoint && grade.kgkPoint < kgkPoint);
+        });
+        grades.splice(index < 0 ? grades.length : index, 0, new Grade(
+            gradeNameInput.value,
+            jmRank,
+            kgkRank,
+            kgkPoint,
+            id + ""
+        ));
+        gradeNameInput.value = "";
+        gradeJmRankSelect.value = "none";
+        gradeKgkRankSelect.value = "none";
+        gradeJmPointSpan.textContent = "-";
+        gradeKgkPointSelect.value = "0";
+        userdata.save("qualList");
+        updateGrades();
+    });
 
     const updateGrades = function () {
         if (gradeQualSelect.value === "") {
@@ -428,7 +504,7 @@
             row.remove();
         });
         qual.grades.forEach(function (grade, index) {
-            addGrade(index, grade);
+            addGrade(grade.id, grade, index, gradeQualSelect.value);
         });
     };
 

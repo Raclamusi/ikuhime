@@ -3,9 +3,9 @@ const updateGrade = function () {
     const clone = document.addition.grade.cloneNode(false);
     const qualId = document.addition.qualification.value;
     if (qualId !== "") {
-        userdata.qualList[qualId].grades.forEach(function (grade, index) {
+        userdata.qualList[qualId].grades.forEach(function (grade) {
             const op = document.createElement("option");
-            op.value = index;
+            op.value = grade.id;
             op.textContent = grade.name === "" ? "-" : grade.name;
             clone.appendChild(op);
         });
@@ -39,14 +39,15 @@ const registration = function () {
         alert("資格･検定を選択してください");
         return;
     }
-    const gradeId = parseInt(document.addition.grade.value);
+    const gradeId = document.addition.grade.value;
     const yearAndMonth = document.addition.month.value;
     const comment = document.addition.comment.value;
     const year = yearAndMonth === "" ? 0 : parseInt(yearAndMonth.substr(0, 4));
     const month = yearAndMonth === "" ? 0 : parseInt(yearAndMonth.substr(5, 2));
     const obtainedQual = new ObtainedQualification(qualId, gradeId, year, month);
     const qualInfo = userdata.qualList[qualId];
-    const gradeInfo = qualInfo.grades[gradeId];
+    const gradeIndex = findGradeIndex(qualId, gradeId);
+    const gradeInfo = qualInfo.grades[gradeIndex];
     const sameIdQuals = userdata.quals.filter(function (qual) {
         return qual.id === obtainedQual.id;
     });
@@ -54,7 +55,7 @@ const registration = function () {
         return qual.gradeId === obtainedQual.gradeId;
     });
     const lowerGradeQuals = sameIdQuals.filter(function (qual) {
-        return qual.gradeId > obtainedQual.gradeId;
+        return findGradeIndex(qual.id, qual.gradeId) > gradeIndex;
     });
     const saveComment = function () {
         if (comment !== "") {
@@ -89,50 +90,50 @@ const registration = function () {
             break;
         case "kikembutsu":  // 危険物取扱者
             const otsuGrades = qualInfo.grades.filter(function (grade) {
-                return grade.name.startsWith("乙種");
+                return grade.id.startsWith("otsu");
             });
             const bestOtsuGrade = otsuGrades.reduce(function (bestGrade, grade) {
                 return grade.kgkPoint > bestGrade.kgkPoint ? grade : bestGrade;
             });
             const heiGrade = qualInfo.grades.find(function (grade) {
-                return grade.name ===  "丙種";
+                return grade.id ===  "hei";
             });
             obtainedQual.jmClass = [181, 182, 183, 184, 185, 186][
-                1 + ["乙種１類", "乙種２類", "乙種３類", "乙種５類", "乙種６類"].indexOf(gradeInfo.name)
+                1 + ["otsu1", "otsu2", "otsu3", "otsu5", "otsu6"].indexOf(gradeInfo.id)
             ];
-            switch (gradeInfo.name) {
-                case "甲種":
+            switch (gradeInfo.id) {
+                case "ko":
                     sameIdQuals.forEach(function (qual) {
                         qual.jmEnable = false;
                     });
                     sameIdQuals.filter(function (qual) {
-                        return qualInfo.grades[qual.gradeId].kgkPoint < bestOtsuGrade.kgkPoint;
+                        return findGrade(qual.id, qual.gradeId).kgkPoint < bestOtsuGrade.kgkPoint;
                     }).forEach(function (qual) {
                         qual.kgkEnable = false;
                     });
                     break;
-                case "乙種４類":
+                case "otsu4":
                     sameIdQuals.filter(function (qual) {
-                        return qualInfo.grades[qual.gradeId].name === "丙種";
+                        return qual.gradeId === "hei";
                     }).forEach(function (qual) {
                         qual.jmEnable = false;
                     });
                     break;
-                case "丙種":
+                case "hei":
                     if (sameIdQuals.length > 0) {
                         obtainedQual.jmEnable = false;
                         obtainedQual.kgkEnable = false;
                     }
                     break;
             }
-            if (gradeInfo.name.startsWith("乙種")) {
+            if (gradeInfo.id.startsWith("otsu")) {
                 if (sameIdQuals.some(function (qual) {
-                    return qualInfo.grades[qual.gradeId].name === "甲種";
+                    return qual.gradeId === "ko";
                 })) {
                     obtainedQual.jmEnable = false;
                 }
                 const otsuCount = sameIdQuals.filter(function (qual) {
-                    return qualInfo.grades[qual.gradeId].name.startsWith("乙種");
+                    return qual.gradeId.startsWith("otsu");
                 }).length;
                 if (otsuCount === 0) {
                     gradeInfo.kgkRank = bestOtsuGrade.kgkRank;
@@ -150,7 +151,7 @@ const registration = function () {
                     obtainedQual.kgkEnable = false;
                 }
                 sameIdQuals.filter(function (qual) {
-                    return qualInfo.grades[qual.gradeId].name === "丙種";
+                    return qual.gradeId === "hei";
                 }).forEach(function (qual) {
                     qual.kgkEnable = false;
                 });
