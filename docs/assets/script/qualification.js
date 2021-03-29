@@ -34,7 +34,9 @@ const getEraName = function (year, month) {
         const kgk = document.createElement("td");
         const jmp = document.createElement("td");
         const kgkp = document.createElement("td");
-        month.textContent = [0, null].includes(qual.month) ? "未設定" : getEraName(qual.year, qual.month);
+        month.textContent = [qual.year, qual.month].some(function (e) {
+            return [0, null].includes(e);
+        }) ? "未設定" : getEraName(qual.year, qual.month);
         org.textContent = orgInfo.name;
         name.textContent = qualInfo.name + " " + gradeInfo.name;
         jm.textContent = qualInfo.jmClass === "" ? "未設定" : qualInfo.jmClass + gradeInfo.jmRank;

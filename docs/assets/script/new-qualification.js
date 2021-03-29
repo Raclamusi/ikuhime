@@ -34,16 +34,27 @@ const update = function () {
 };
 
 const registration = function () {
+    const fromYearType = function (yearType, year) {
+        const starts = {
+            seireki: 1,
+            showa: 1926,
+            heisei: 1989,
+            reiwa: 2019,
+        };
+        return year + starts[yearType] - 1;
+    };
     const qualId = document.addition.qualification.value;
     if (qualId === "") {
         alert("資格･検定を選択してください");
         return;
     }
     const gradeId = document.addition.grade.value;
-    const yearAndMonth = document.addition.month.value;
+    const yearType = document.addition.yearType.value;
+    const yearValue = parseInt(document.addition.year.value);
+    const monthOption = document.addition.month.value;
     const comment = document.addition.comment.value;
-    const year = yearAndMonth === "" ? 0 : parseInt(yearAndMonth.substr(0, 4));
-    const month = yearAndMonth === "" ? 0 : parseInt(yearAndMonth.substr(5, 2));
+    const year = isNaN(yearValue) ? 0 : fromYearType(yearType, yearValue);
+    const month = monthOption == "none" ? 0 : parseInt(monthOption);
     const obtainedQual = new ObtainedQualification(qualId, gradeId, year, month);
     const qualInfo = userdata.qualList[qualId];
     const gradeIndex = findGradeIndex(qualId, gradeId);

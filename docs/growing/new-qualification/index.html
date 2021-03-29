@@ -43,7 +43,34 @@
             <p><label>主催<select name="organizer"><option value="none" selected>指定なし</option></select></label></p>
             <p><label>資格･検定<select name="qualification"></select></label> </p>
             <p><label>級<select name="grade"></select></label></p>
-            <p><label>取得年月<input name="month" type="month"></label></p>
+            <p>
+                取得年月
+                <select name="yearType">
+                    <option value="seireki" selected>西暦</option>
+                    <option value="showa">昭和</option>
+                    <option value="heisei">平成</option>
+                    <option value="reiwa">令和</option>
+                </select>
+                <label><input type="number" name="year">年</label>
+                <label>
+                    <select name="month">
+                        <option value="none" selected>-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    月
+                </label>
+            </p>
             <p><label>コメント(出来事の記録として保存されます)<br><textarea name="comment" placeholder="感想や頑張ったことなどを書きましょう"></textarea></label></p>
         </form>
         <a href="javascript: registration();" class="small-button">登録</a>
