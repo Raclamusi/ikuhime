@@ -98,4 +98,37 @@ if (location.pathname.search(/\/ikuhime\/welcome/) === -1) {
             qual.gradeId = userdata.qualList[qual.id].grades[qual.gradeId].id;
         });
     }
+
+    if (["department", "schoolGrade", "studentNumber", "lastAccessTime"].some(function (prop) {
+        return !(prop in userdata);
+    })) {
+        userdata.department = "";
+        userdata.schoolGrade = 0;
+        userdata.studentNumber = 0;
+        userdata.lastAccessTime = new Date().getTime();
+        userdata.save("department", "schoolGrade", "studentNumber", "lastAccessTime");
+    }
+
+    // move up to the next grade
+    if ([1, 2, 3].includes(userdata.schoolGrade)) {
+        const getSchoolYear = function (date) {
+            return date.getFullYear() - (date.getMonth() < 3);
+        };
+        const now = getSchoolYear(new Date());
+        const lastAccess = getSchoolYear(new Date(userdata.lastAccessTime));
+        if (now > lastAccess) {
+            userdata.schoolGrade += now - lastAccess;
+            if (userdata.schoolGrade > 3) {
+                userdata.schoolGrade = 4;
+                alert("ご卒業おめでとうございます！");
+            }
+            userdata.save("schoolGrade");
+        }
+    }
+
+    // update last access time
+    {
+        userdata.lastAccessTime = new Date().getTime();
+        userdata.save("lastAccessTime");
+    }
 }

@@ -1,22 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>ようこそ - 育成！姫工生アバター</title>
+    <title>ユーザー情報編集 - 育成！姫工生アバター</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="ogUvn2HCG3CDCzJtdgOUA2EdJ9e4s6U1MtCrjbv2Mpw">
     <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:site_name" content="育成！姫工生アバター">
-    <meta property="og:title" content="ようこそ - 育成！姫工生アバター">
+    <meta property="og:title" content="ユーザー情報編集 - 育成！姫工生アバター">
     <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/welcome">
+    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/setting/edit-userdata">
     <meta property="og:image" content="https://raclamusi.github.io/ikuhime/assets/image/icon.png">
     <meta name="twitter:card" content="summary">
     <link rel="shortcut icon icon" type="image/png" href="/ikuhime/assets/image/icon.png">
     <link rel="apple-touch-icon" type="image/png" href="/ikuhime/assets/image/icon.png">
     <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/common.css">
-    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/welcome.css">
+    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/edit-userdata.css">
     <script type="text/javascript" src="/ikuhime/assets/script/polyfill.js"></script>
 </head>
 <body>
@@ -34,36 +34,37 @@
         </nav>
     </header>
     <main class="main">
-        <h1>ようこそ</h1>
-        <p>「育成！姫工生アバター」は自分の分身であるアバターを作り、成長させることができます。</p>
-        <p class="attension">このサイトで入力された情報は、外部には公開されません。<br>安心して本名でもなんでも入れちゃってください。<br>そのかわり、お使いの端末に情報が保存されるので、学校やネットカフェのパソコンなど、個人の端末でない場合は、<br>ほかの人があなたの入力した情報を閲覧できますので十分ご注意ください。</p>
-        <form name="initForm" onsubmit="return false;">
-            <p><label>名前:<input type="text" name="name" value="姫工生"></label></p>
-            <p><label>学科･クラス（任意）:<select name="department">
-                <option value="none" selected>-</option>
-                <option value="M1">機械科１組</option>
-                <option value="M2">機械科２組</option>
-                <option value="E">電気科</option>
-                <option value="C">工業化学科</option>
-                <option value="D">デザイン科</option>
-                <option value="W">溶接科</option>
-                <option value="R">電子機械科</option>
-            </select></label></p>
-            <p><label>学年（任意）:<select name="schoolGrade">
-                <option value="0" selected>-</option>
-                <option value="1">１年生</option>
-                <option value="2">２年生</option>
-                <option value="3">３年生</option>
-                <option value="4">卒業生</option>
-            </select></label>（4月1日0時に自動で更新されます）</p>
-            <p><label>出席番号（任意）:<input type="number" name="studentNumber"></label></p>
-        </form>
-        <a href="javascript: start();" class="small-button">スタート</a>
+        <a href="/ikuhime/setting" class="back">←戻る</a>
+        <h1>ユーザー情報編集</h1>
+            <div class="editor">
+            <form name="editForm" onsubmit="return false;">
+                <p><label>名前<input type="text" name="name"></label></p>
+                <p><label>学科･クラス<select name="department">
+                    <option value="none">-</option>
+                    <option value="M1">機械科１組</option>
+                    <option value="M2">機械科２組</option>
+                    <option value="E">電気科</option>
+                    <option value="C">工業化学科</option>
+                    <option value="D">デザイン科</option>
+                    <option value="W">溶接科</option>
+                    <option value="R">電子機械科</option>
+                </select></label></p>
+                <p><label>学年<select name="schoolGrade">
+                    <option value="0">-</option>
+                    <option value="1">１年生</option>
+                    <option value="2">２年生</option>
+                    <option value="3">３年生</option>
+                    <option value="4">卒業生</option>
+                </select></label>（4月1日0時に自動で更新されます）</p>
+                <p><label>出席番号<input type="number" name="studentNumber"></label></p>
+            </form>
+            <a href="javascript: applyChanges();" class="small-button">変更を適用</a>
+        </div>
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/dataLists.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/userdata.js"></script>
-    <script type="text/javascript" src="/ikuhime/assets/script/welcome.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/edit-userdata.js"></script>
 </body>
 </html>
