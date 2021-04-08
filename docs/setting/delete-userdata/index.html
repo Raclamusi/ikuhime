@@ -1,22 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>設定 - 育成！姫工生アバター</title>
+    <title>ユーザーデータ削除 - 育成！姫工生アバター</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="ogUvn2HCG3CDCzJtdgOUA2EdJ9e4s6U1MtCrjbv2Mpw">
     <meta name="description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:site_name" content="育成！姫工生アバター">
-    <meta property="og:title" content="設定 - 育成！姫工生アバター">
+    <meta property="og:title" content="ユーザーデータ削除 - 育成！姫工生アバター">
     <meta property="og:description" content="資格を取ったり大会で活躍したりすると、自分のアバターが成長していきます！　「育成！姫工生アバター」は自分の成長を可視化することのできるサイトです。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/setting">
+    <meta property="og:url" content="https://raclamusi.github.io/ikuhime/setting/delete-userdata">
     <meta property="og:image" content="https://raclamusi.github.io/ikuhime/assets/image/icon.png">
     <meta name="twitter:card" content="summary">
     <link rel="shortcut icon icon" type="image/png" href="/ikuhime/assets/image/icon.png">
     <link rel="apple-touch-icon" type="image/png" href="/ikuhime/assets/image/icon.png">
     <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/common.css">
-    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/setting.css">
+    <link rel="stylesheet" type="text/css" href="/ikuhime/assets/stylesheet/delete-userdata.css">
     <script type="text/javascript" src="/ikuhime/assets/script/polyfill.js"></script>
 </head>
 <body>
@@ -34,19 +34,25 @@
         </nav>
     </header>
     <main class="main">
-        <a href="/ikuhime/home" class="back">←戻る</a>
-        <div>
-            <ul>
-                <li><a href="/ikuhime/setting/edit-userdata" class="big-button">ユーザー情報の変更</a></li>
-                <li><a href="/ikuhime/setting/edit-qualification" class="big-button">資格･検定情報の編集</a></li>
-                <li><a href="/ikuhime/setting/delete-userdata" class="big-button">ユーザーデータの削除</a></li>
-            </ul>
+        <a href="/ikuhime/setting" class="back">←戻る</a>
+        <h1>ユーザーデータ削除</h1>
+        <div class="selector">
+            <p>削除する情報にチェックを入れてください。</p>
+            <p>「資格･検定の情報」は「取得した資格」を削除するときのみ削除できます。</p>
+            <form class="select-form" name="selectForm" onsubmit="return false;">
+                <p><label><input type="checkbox" name="personal">個人情報（名前、学科、学年、出席番号）</label></p>
+                <p><label><input type="checkbox" name="avatar">アバターの育成情報（レベル、経験値、装備、実績）</label></p>
+                <p><label><input type="checkbox" name="event">出来事の記録</label></p>
+                <p><label><input type="checkbox" name="obtain">取得した資格</label></p>
+                <p><label><input type="checkbox" name="qualification" disabled>資格･検定の情報（主催者、資格･検定の名前、級、各顕彰のポイント）</label></p>
+            </form>
+            <a href="javascript: deleteSelectedItems();" class="small-button danger-button">選択した項目を削除</a>
         </div>
     </main>
     <script type="text/javascript" src="/ikuhime/assets/script/common.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/dataLists.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/StorageManager.js"></script>
     <script type="text/javascript" src="/ikuhime/assets/script/userdata.js"></script>
-    <script type="text/javascript" src="/ikuhime/assets/script/setting.js"></script>
+    <script type="text/javascript" src="/ikuhime/assets/script/delete-userdata.js"></script>
 </body>
 </html>

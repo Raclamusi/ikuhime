@@ -1,0 +1,19 @@
+
+h1 {
+    margin: 0 3%;
+}
+
+.selector {
+    margin: 0 3%;
+}
+
+.select-form {
+    margin: 0 3%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ccffdd;
+}
+
+.danger-button {
+    background-color: #ff0000;
+}
