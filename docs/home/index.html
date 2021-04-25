@@ -34,7 +34,10 @@
         </nav>
     </header>
     <main class="main">
-        <div class="avatar-field">
+        <div class="avatar">
+            <canvas id="avatar" class="avatar-canvas"></canvas>
+        </div>
+        <div class="avatar-info">
             <div class="profile">
                 <div class="profile-name">
                     <span id="avatar-name">姫工生</span>&emsp;Lv.<span id="avatar-level">1</span>
@@ -42,11 +45,8 @@
                 <div class="profile-expbar"><div id="avatar-expbar" class="profile-expbar-inner"></div></div>
                 <div class="profile-exp">レベルアップまであと <span id="avatar-exp">100</span>exp</div>
             </div>
-            <div class="avatar">
-                <canvas id="avatar" class="avatar-canvas"></canvas>
-            </div>
             <div class="buttons">
-                <a href="" download="my_avatar.png" id="download" class="buttons-download">アバター画像をダウンロード</a>
+                <a href="javascript: void(0);" download="my_avatar.png" id="download" class="buttons-download">アバター画像をダウンロード</a>
                 <a href="/ikuhime/growing" class="buttons-growing">育成</a>
             </div>
         </div>

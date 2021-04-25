@@ -1,19 +1,20 @@
 ﻿
-.avatar-field {
+.main {
     display: flex;
 }
 
 .profile {
-
+    margin: 30px;
+    width: 45vw;
 }
 
 .profile-name {
-    margin: 30px 30px 0;
     font-size: 30px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .profile-expbar {
-    margin: 0 30px;
     width: 210px;
     height: 30px;
     border: 5px solid #333399;
@@ -42,10 +43,9 @@
 .buttons {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: center;
     width: auto;
-    margin: 100px auto 0;
+    margin: 0 auto;
 }
 
 .buttons a {
@@ -79,27 +79,51 @@
 
 
 @media screen and (max-width: 760px) {
-    .avatar-field {
-        display: block;
+    .main {
+        flex-direction: column;
+    }
+
+    .profile {
+        margin: 0 20px;
+        width: auto;
+    }
+
+    .profile-expbar {
+        margin: 0 auto;
+        width: 80%;
     }
 
     .avatar {
-        margin: 0 auto;
-        width: 350px;
+        margin: 30px auto 0;
+        width: 90%;
     }
 
     .buttons {
+        margin-bottom: 30px;
+        flex-direction: column-reverse;
         justify-content: center;
-        margin-top: 0;
     }
 
     .buttons a {
-        margin: 10px 0;
+        margin: 15px 0;
     }
 
     .buttons-growing {
         height: 80px;
         line-height: 80px;
         box-shadow: #00000044 0px -20px 20px inset, #000000bb 5px 5px 5px;
+    }
+}
+
+
+
+@media print {
+    .profile-name {
+        white-space: normal;
+        overflow-x: visible;
+    }
+
+    .profile-expbar-inner {
+        border-right: 3px #118822 solid;
     }
 }
