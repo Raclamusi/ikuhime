@@ -187,3 +187,19 @@ body {
         line-height: 100px;
     }
 }
+
+
+
+@media print {
+    .header {
+        display: none;
+    }
+
+    .main {
+        padding-top: 0;
+    }
+
+    .back {
+        display: none;
+    }
+}
