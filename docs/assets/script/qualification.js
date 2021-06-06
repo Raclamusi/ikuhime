@@ -61,10 +61,10 @@ const getEraName = function (year, month) {
         table.appendChild(row);
     });
     const jmTotal = userdata.quals.reduce(function (total, qual) {
-        return total + qual.jmEnable ? findGrade(qual.id, qual.gradeId).jmPoint : 0;
+        return total + (qual.jmEnable ? findGrade(qual.id, qual.gradeId).jmPoint : 0);
     }, 0);
     const kgkTotal = userdata.quals.reduce(function (total, qual) {
-        return total + qual.kgkEnable ? findGrade(qual.id, qual.gradeId).kgkPoint : 0;
+        return total + (qual.kgkEnable ? findGrade(qual.id, qual.gradeId).kgkPoint : 0);
     }, 0);
     jmPointSpan.textContent = jmTotal;
     jmPrizeSpan.textContent = jmTotal >= 45 ? "ゴールド！" : jmTotal >= 30 ? "シルバー" : jmTotal >= 20 ? "ブロンズ" : "";
