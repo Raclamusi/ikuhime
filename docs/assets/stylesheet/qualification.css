@@ -1,9 +1,79 @@
 
+h1 {
+    margin: 0 3%;
+}
+
+.userdata {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.profile {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 10px 3%;
+    padding: 5px;
+    border: 2px solid #5555ff;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.profile-school {
+    margin: 5px 15px;
+}
+
+.profile-name {
+    margin: 5px 15px;
+}
+
+.userdata-button {
+    margin: 15px;
+}
+
+.print-button {
+    margin: 15px;
+    font-size: 18px;
+}
+
+.qualif {
+    margin: 0 6% 50px;
+}
+
+.qualif-honoring {
+    margin: 10px 0;
+    padding: 0 15px;
+    border: 5px double #ffd700;
+}
+
 .qualif-prize {
+    display: inline-block;
+    padding: 0 2px;
+    border: 0 ridge;
     font-size: 18px;
     font-weight: bold;
 }
 
+.content {
+    overflow-x: auto;
+}
+
 .gray-item {
     background-color: #bbbbbb;
+}
+
+
+
+@media print {
+    .gray-item {
+        text-decoration: line-through 2px;
+    }
+
+    .qualif-prize {
+        color: #000000 !important;
+    }
+
+    .no-printing {
+        display: none;
+    }
 }

@@ -1,22 +1,41 @@
 ﻿
-const getEraName = function (year, month) {
-    const eras = [
-        { name: "昭和", year: 1926, month: 12 },
-        { name: "平成", year: 1989, month: 1 },
-        { name: "令和", year: 2019, month: 5 },
-        { name: "terminator", year: Infinity, month: Infinity }
-    ];
-    const era = eras[-1 + eras.findIndex(function (e) {
-        return year < e.year || (year === e.year && month < e.month);
-    })];
-    if (era === undefined) {
-        return eras[0].name + "より前には対応していません（西暦" + year + "年" + month + "月）";
-    }
-    const y = year - era.year + 1;
-    return era.name + (y == 1 ? "元" : y) + "年" + month + "月";
-};
-
 (function () {
+    const getEraName = function (year, month) {
+        const eras = [
+            { name: "昭和", year: 1926, month: 12 },
+            { name: "平成", year: 1989, month: 1 },
+            { name: "令和", year: 2019, month: 5 },
+            { name: "terminator", year: Infinity, month: Infinity }
+        ];
+        const era = eras[-1 + eras.findIndex(function (e) {
+            return year < e.year || (year === e.year && month < e.month);
+        })];
+        if (era === undefined) {
+            return eras[0].name + "より前には対応していません（西暦" + year + "年" + month + "月）";
+        }
+        const y = year - era.year + 1;
+        return era.name + (y == 1 ? "元" : y) + "年" + month + "月";
+    };
+
+    document.getElementById("department").textContent = {
+        M1: "機械科１組", M2: "機械科２組", E: "電気科", C: "工業化学科",
+        D: "デザイン科", W: "溶接科", R: "電子機械科", "": "",
+    }[userdata.department];
+    document.getElementById("school-grade").textContent = [
+        "", "１年生", "２年生", "３年生", "卒業生",
+    ][userdata.schoolGrade];
+    document.getElementById("student-number").textContent = userdata.studentNumber ? userdata.studentNumber + "番" : "";
+    document.getElementById("name").textContent = userdata.name;
+
+    document.getElementById("switch-userdata").addEventListener("click", function () {
+        const profile = document.getElementById("profile");
+        profile.style.display = profile.style.display === "none" ? "" : "none";
+    });
+
+    document.getElementById("print").addEventListener("click", function () {
+        print();
+    });
+
     const table = document.getElementById("table");
     const jmPointSpan = document.getElementById("jm-point");
     const jmPrizeSpan = document.getElementById("jm-prize");
@@ -68,8 +87,10 @@ const getEraName = function (year, month) {
     }, 0);
     jmPointSpan.textContent = jmTotal;
     jmPrizeSpan.textContent = jmTotal >= 45 ? "ゴールド！" : jmTotal >= 30 ? "シルバー" : jmTotal >= 20 ? "ブロンズ" : "";
-    jmPrizeSpan.style.color = jmTotal >= 45 ? "#ffbb00" : jmTotal >= 30 ? "#aaaaaa" : jmTotal >= 20 ? "#bb7733" : "#000000";
+    jmPrizeSpan.style.color = jmPrizeSpan.style.borderColor = jmTotal >= 45 ? "#ffbb00" : jmTotal >= 30 ? "#aaaaaa" : jmTotal >= 20 ? "#bb7733" : "#000000";
+    jmPrizeSpan.style.borderWidth = jmTotal >= 20 ? "3px" : "";
     kgkPointSpan.textContent = kgkTotal;
     kgkPrizeSpan.textContent = kgkTotal >= 60 ? "金賞！" : kgkTotal >= 40 ? "銀賞" : kgkTotal >= 20 ? "顕彰" : "";
-    kgkPrizeSpan.style.color = kgkTotal >= 60 ? "#ffbb00" : kgkTotal >= 40 ? "#aaaaaa" : kgkTotal >= 20 ? "#bb7733" : "#000000";
+    kgkPrizeSpan.style.color = kgkPrizeSpan.style.borderColor = kgkTotal >= 60 ? "#ffbb00" : kgkTotal >= 40 ? "#aaaaaa" : kgkTotal >= 20 ? "#bb7733" : "#000000";
+    kgkPrizeSpan.style.borderWidth = kgkTotal >= 20 ? "3px" : "";
 })();
