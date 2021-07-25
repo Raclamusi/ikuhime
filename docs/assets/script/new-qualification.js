@@ -79,13 +79,18 @@ const registration = function () {
             userdata.save("eventRecords");
         }
     };
+    const finish = function () {
+        if (!confirm("登録が完了しました！\n続けて登録しますか？")) {
+            location.href = "/ikuhime/home";
+        }
+    };
     if (sameQual !== undefined) {
         if (confirm("この検定はすでに登録されています\n情報を更新しますか？")) {
             sameQual.year = year;
             sameQual.month = month;
             userdata.save("quals");
             saveComment();
-            location.href = "/ikuhime/home";
+            finish();
         }
         return;
     }
@@ -199,7 +204,7 @@ const registration = function () {
     userdata.exp = 500 + Math.max(gradeInfo.jmPoint * 100, gradeInfo.kgkPoint * 200);
     userdata.save("quals", "exp", "qualList");
     saveComment();
-    location.href = "/ikuhime/home";
+    finish();
 };
 
 (function () {

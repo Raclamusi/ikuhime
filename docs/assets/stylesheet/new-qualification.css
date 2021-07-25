@@ -1,5 +1,14 @@
 
-.link {
+.newqual {
+    margin: 0 3%;
+}
+
+.newqual input,
+.newqual select {
+    margin-left: 15px;
+}
+
+.newqual-link {
     display: block;
     width: 300px;
     height: 40px;
@@ -13,12 +22,12 @@
     background-color: #ccffcc;
 }
 
-.searcher {
+.newqual-searcher {
     display: flex;
     flex-direction: row;
 }
 
-textarea {
+.newqual textarea {
     margin: 0 5%;
     width: 90%;
     height: 150px;
@@ -28,7 +37,7 @@ textarea {
 
 
 @media screen and (max-width: 760px) {
-    .searcher {
+    .newqual-searcher {
         flex-direction: column;
     }
 }
