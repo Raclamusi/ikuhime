@@ -18,7 +18,25 @@ section {
     background-color: #ccffdd;
 }
 
+.grade-select input,
+.grade-select select {
+    margin-left: 15px;
+}
+
 .grade-select-search {
     padding: 10px;
     border: 2px dotted #5555ff;
+}
+
+.grade-select-searchname {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+@media screen and (max-width: 760px) {
+    .grade-select-searchname {
+        flex-direction: column;
+    }
 }

@@ -25,6 +25,15 @@
     padding: 0 30px;
 }
 
+.event-searcher {
+    display: flex;
+    flex-direction: row;
+}
+
+.event-searcher input {
+    margin-left: 15px;
+}
+
 .event-content {
     margin: 0 0 5px;
 }
@@ -32,5 +41,7 @@
 
 
 @media screen and (max-width: 760px) {
-
+    .event-searcher {
+        flex-direction: column;
+    }
 }

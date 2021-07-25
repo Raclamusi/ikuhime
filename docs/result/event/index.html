@@ -38,7 +38,11 @@
         <div class="event">
             <h1>今までの出来事</h1>
             <div class="event-search">
-                <p><label>検索&nbsp;<input id="search" type="text"></label></p>
+                <p class="event-searcher">
+                    <label>検索<input id="search" type="text"></label>
+                    <label><input id="case" type="checkbox">大文字と小文字を区別する</label>
+                    <label><input id="regexp" type="checkbox">正規表現を使用する</label>
+                </p>
             </div>
             <ul id="list" class="event-list"></ul>
         </div>

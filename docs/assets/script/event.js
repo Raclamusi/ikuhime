@@ -1,8 +1,12 @@
 
 (function () {
     const searcher = document.getElementById("search");
+    const caseCheck = document.getElementById("case");
+    const regexpCheck = document.getElementById("regexp");
     const updateList = function () {
-        const searchedText = new RegExp(searcher.value, "i");
+        const searchedText = new RegExp(
+            regexpCheck.checked ? searcher.value : searcher.value.replace(/[\\*+.?{}()[\]^$|]/g, "\\$&"),
+            caseCheck.checked ? "u" : "iu");
         const oldList = document.getElementById("list");
         const newList = oldList.cloneNode(false);
         userdata.eventRecords.filter(function (record) {
@@ -32,6 +36,8 @@
         oldList.parentNode.replaceChild(newList, oldList);
     };
     searcher.addEventListener("change", updateList);
+    caseCheck.addEventListener("change", updateList);
+    regexpCheck.addEventListener("change", updateList);
     
     updateList();
 })();

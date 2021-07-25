@@ -15,7 +15,12 @@ const updateGrade = function () {
 
 const update = function () {
     const clone = document.addition.qualification.cloneNode(false);
-    const searchedText = document.addition.search.value;
+    const search = document.addition.search.value;
+    const caseCheck = document.addition.caseCheck.checked;
+    const regexpCheck = document.addition.regexpCheck.checked;
+    const searchedText = new RegExp(
+        regexpCheck ? search : search.replace(/[\\*+.?{}()[\]^$|]/g, "\\$&"),
+        caseCheck ? "u" : "iu");
     const orgId = document.addition.organizer.value;
     Object.entries(userdata.qualList).map(function (e) {
         return { id: e[0], qual: e[1] };
@@ -207,6 +212,8 @@ const registration = function () {
         document.addition.organizer.appendChild(op);
     });
     document.addition.search.addEventListener("change", update);
+    document.addition.caseCheck.addEventListener("change", update);
+    document.addition.regexpCheck.addEventListener("change", update);
     document.addition.organizer.addEventListener("change", update);
     update();
 })();

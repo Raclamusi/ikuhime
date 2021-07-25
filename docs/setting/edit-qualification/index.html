@@ -91,10 +91,14 @@
             <div class="grade-select">
                 <h3>検定選択</h3>
                 <div class="grade-select-search">
-                    <p><label>名前で検索&nbsp;<input id="grade-search-name" type="text"></label></p>
-                    <p><label>主催で検索&nbsp;<select id="grade-search-org"><option value="none" selected>指定なし</option></select></label></p>
+                    <p class="grade-select-searchname">
+                        <label>名前で検索<input id="grade-search-name" type="text"></label>
+                        <label><input id="grade-search-case" type="checkbox">大文字と小文字を区別する</label>
+                        <label><input id="grade-search-regexp" type="checkbox">正規表現を使用する</label>
+                    </p>
+                    <p><label>主催で検索<select id="grade-search-org"><option value="none" selected>指定なし</option></select></label></p>
                 </div>
-                <p><label>資格･検定&nbsp;<select id="grade-qual"></select></label></p>
+                <p><label>資格･検定<select id="grade-qual"></select></label></p>
             </div>
             <p>上にあるほど上位の級として扱われます。（「危険物取扱者」など、配点が特殊なものはその通りにならないことがあります。）</p>
             <div class="content">

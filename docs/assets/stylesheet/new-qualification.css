@@ -13,9 +13,22 @@
     background-color: #ccffcc;
 }
 
+.searcher {
+    display: flex;
+    flex-direction: row;
+}
+
 textarea {
     margin: 0 5%;
     width: 90%;
     height: 150px;
     font-size: 20px;
+}
+
+
+
+@media screen and (max-width: 760px) {
+    .searcher {
+        flex-direction: column;
+    }
 }

@@ -39,7 +39,11 @@
         <p>資格や検定は自分の成長の証！　忘れないように記録しよう。</p>
         <a href="/ikuhime/setting/edit-qualification" class="link">資格･検定情報を追加</a>
         <form name="addition" onsubmit="return false;">
-            <p><label>検索<input name="search" type="text"></label></p>
+            <p class="searcher">
+                <label>検索<input name="search" type="text"></label>
+                <label><input name="caseCheck" type="checkbox">大文字と小文字を区別する</label>
+                <label><input name="regexpCheck" type="checkbox">正規表現を使用する</label>
+            </p>
             <p><label>主催<select name="organizer"><option value="none" selected>指定なし</option></select></label></p>
             <p><label>資格･検定<select name="qualification"></select></label> </p>
             <p><label>級<select name="grade"></select></label></p>

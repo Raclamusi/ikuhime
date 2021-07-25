@@ -13,6 +13,8 @@
     const qualOrgElementList = [];
 
     const gradeSearchNameInput = document.getElementById("grade-search-name");
+    const gradeSearchCaseCheck = document.getElementById("grade-search-case");
+    const gradeSearchRegexpCheck = document.getElementById("grade-search-regexp");
     const gradeSearchOrgSelect = document.getElementById("grade-search-org");
     const gradeQualSelect = document.getElementById("grade-qual");
     const gradeTable = document.getElementById("grade-table");
@@ -510,8 +512,12 @@
 
     const searchQual = function () {
         const searchedName = gradeSearchNameInput.value;
+        const caseCheck = gradeSearchCaseCheck.checked;
+        const regexpCheck = gradeSearchRegexpCheck.checked;
         const searchedOrgId = gradeSearchOrgSelect.value;
-        const searchedRegExp = new RegExp(searchedName, "i");
+        const searchedRegExp = new RegExp(
+            regexpCheck ? searchedName : searchedName.replace(/[\\*+.?{}()[\]^$|]/g, "\\$&"),
+            caseCheck ? "u" : "iu");
         const check = function (qual) {
             return qual.name.search(searchedRegExp) !== -1 &&
                 (searchedOrgId === "none" || qual.orgId === searchedOrgId);
@@ -539,6 +545,8 @@
     };
 
     gradeSearchNameInput.addEventListener("change", searchQual);
+    gradeSearchCaseCheck.addEventListener("change", searchQual);
+    gradeSearchRegexpCheck.addEventListener("change", searchQual);
     gradeSearchOrgSelect.addEventListener("change", searchQual);
     gradeQualSelect.addEventListener("change", updateGrades);
 
